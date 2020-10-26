@@ -56,25 +56,8 @@ export default function ProfileTabs(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="General Info" {...a11yProps(0)} />
-          <Tab label="Department" {...a11yProps(1)} />
-          <Tab label="KPI" {...a11yProps(2)} />
-        </Tabs>
-      </AppBar>
-      
-      <TabPanel value={value} index={0}>
-        General Info  
-      </TabPanel>
-      <TabPanel value={value} index={0}>
-        Department  
-      </TabPanel>
-      <TabPanel value={value} index={0}>
-        KPI  
-      </TabPanel>
-      
+    <div className={classes.root} >
+      Profile Tab
     </div>
   );
 }

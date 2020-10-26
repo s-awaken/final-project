@@ -56,21 +56,8 @@ export default function WorkTabs(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Create" {...a11yProps(0)} />
-          <Tab label="Reaview" {...a11yProps(1)} />
-        </Tabs>
-      </AppBar>
-      
-      <TabPanel value={value} index={0}>
-        Create
-      </TabPanel>
-      <TabPanel value={value} index={0}>
-        Review  
-      </TabPanel>
-      
+    <div>
+      Work Tabs
     </div>
   );
 }

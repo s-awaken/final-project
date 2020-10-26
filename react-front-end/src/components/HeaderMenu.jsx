@@ -61,32 +61,38 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const [state, setState] = React.useState({
-    isManager: true,
-    isActiveProfile: false,
-    isActiveEmployees:false,
-    isActiveWork:false
-      
-    
-  })
-  const activateProfile = () => setState({
-    ...state,
-    isActiveProfile: true,
-    isActiveEmployees: false,
-    isActiveWork: false
-  })
-  const activateEmployees = () => setState({
-    ...state,
-    isActiveEmployees: true,
-    isActiveProfile: false,
-    isActiveWork: false
-  })
-  const activateWork = () => setState({
-    ...state,
-    isActiveWork: true,
-    isActiveProfile: false,
-    isActiveEmployees: false
-  })
+  // const [manager, setState] = React.useState(true);
+  
+  const [profile,setProfile] = React.useState(false);
+  const [employees, setEmployees] = React.useState(false);
+  const [work, setWork] = React.useState(false)
+  // const activateProfile = () => setState({
+  //   ...state,
+  //   isActiveProfile: true,
+  //   isActiveEmployees: false,
+  //   isActiveWork: false
+  // })
+  // const activateProfile = () => {
+  //   setState(prev => ({...prev,isActiveProfile:true,isActiveEmployees:false, isActiveWork:false }))
+  // }
+  // const activateEmployees = () => {
+  //   setState(prev => ({...prev,isActiveProfile:false,isActiveEmployees:true, isActiveWork:false }))
+  // }
+  // const activateWork = () => {
+  //   setState(prev => ({...prev,isActiveProfile:false,isActiveEmployees:false, isActiveWork:true }))
+  // }
+  // const activateEmployees = () => setState({
+  //   ...state,
+  //   isActiveEmployees: true,
+  //   isActiveProfile: false,
+  //   isActiveWork: false
+  // })
+  // const activateWork = () => setState({
+  //   ...state,
+  //   isActiveWork: true,
+  //   isActiveProfile: false,
+  //   isActiveEmployees: false
+  // })
   
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -97,15 +103,34 @@ function ResponsiveDrawer(props) {
       <div className={classes.toolbar} />
       <Divider />
       <List>
-      <ListItem button>
-        <Profile onClick={activateProfile}/>
-      </ListItem>
-      <ListItem button>
-        <Employees onClick={activateEmployees}/>
-      </ListItem>
-      <ListItem button>
-        <Work onClick={activateWork} />
-      </ListItem>
+        <ListItem button>
+          <Profile onClick={(e) => {
+            e.preventDefault()
+            setProfile(prev => {return true})
+            setEmployees(prev => {return false})
+            setWork(prev => {return false});
+            
+          }} />
+        </ListItem>
+        <ListItem button>
+          <Employees onClick={(e) => {
+            e.preventDefault()
+            setEmployees(prev => {return true})
+            setProfile(prev => {return false})
+            setWork(prev => {return false});
+            
+          }} />
+        </ListItem>
+        <ListItem button>
+          <Work onClick={(e) => {
+            e.preventDefault()
+            setWork(prev => {return true});
+            setProfile(prev => {return false})
+            setEmployees(prev => {return false})
+            
+
+          }} />
+        </ListItem>
       </List>
       <Divider />
     </div>
@@ -165,10 +190,9 @@ function ResponsiveDrawer(props) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        {state.isActiveEmployees &&  <EmployeesGroupTabs />}
-        {state.isActiveProfile && <ProfileTabs />}
-        {state.isActiveWork && <WorkTabs />}
-
+        {profile && <ProfileTabs />}
+        {employees && <EmployeesGroupTabs />}
+        {work && <WorkTabs />}
         {/* {state.isManager && <ManagerTabs />} */}
       </main>
     </div>
