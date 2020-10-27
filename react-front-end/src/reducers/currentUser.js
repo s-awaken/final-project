@@ -1,6 +1,8 @@
 //I can initial state here and pass to the function
 
 
+
+
 const currentUser = (state = {},action)=>{
   switch(action.type){
     case "SET_USER":
@@ -8,6 +10,7 @@ const currentUser = (state = {},action)=>{
         ...state,
         user:action.payload,
         loggedIn:true
+
       }
     case "LOG_OUT":
       return {

@@ -23,6 +23,7 @@ import Work from "./Work";
 import EmployeesGroupTabs from "./EmployeesGroupTabs";
 import ProfileTabs from "./ProfileTabs";
 import WorkTabs from "./WorkTabs";
+import CountriesContainer from "./CountriesContainer"
 
 const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
@@ -50,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ResponsiveDrawer(props) {
-  const { window } = props;
+  // const { window } = props;
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   // const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const [currentTab, setCurrrentTab] = React.useState("profile");
@@ -100,11 +101,12 @@ function ResponsiveDrawer(props) {
       <WorkTabs />
     ) : (
       <EmployeesGroupTabs />
+      // <CountriesContainer />
     );
 
   return (
     <div>
-      <div>
+      {/* <div>
         {currentUser.loggedIn ? (
           <>
             <h1>Hello, {currentUser.user.name}</h1>
@@ -129,7 +131,7 @@ function ResponsiveDrawer(props) {
         <button onClick={() => dispatch(allActions.counterActions.decrement())}>
           Decrease Counter
         </button>
-      </div>
+      </div> */}
 
       {drawer}
       <div className={classes.contentContainer}>
@@ -147,12 +149,12 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+// ResponsiveDrawer.propTypes = {
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * You won't need it on your project.
+//    */
+//   window: PropTypes.func,
+// };
 
 export default ResponsiveDrawer;

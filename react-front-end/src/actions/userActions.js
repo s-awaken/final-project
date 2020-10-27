@@ -1,7 +1,10 @@
 const SET_USER = "SET_USER";
 const LOG_OUT = "LOG_OUT";
 
+
+
 const setUser = (userObj)=>{
+
   return {
     type:SET_USER,
     payload:userObj
