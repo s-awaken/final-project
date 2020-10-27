@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 import AppBar from "@material-ui/core/AppBar";
@@ -11,8 +11,11 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
-import { Grid } from "@material-ui/core"
+import { Grid } from "@material-ui/core";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+
+import { useSelector, useDispatch } from "react-redux";
+import allActions from "../actions";
 
 import Profile from "./Profile";
 import Employees from "./Employees";
@@ -20,11 +23,12 @@ import Work from "./Work";
 import EmployeesGroupTabs from "./EmployeesGroupTabs";
 import ProfileTabs from "./ProfileTabs";
 import WorkTabs from "./WorkTabs";
+import CountriesContainer from "./CountriesContainer"
 
 const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
   drawerPaper: {
-    width: '240px',
+    width: "240px",
   },
   content: {
     padding: theme.spacing(3),
@@ -34,60 +38,101 @@ const useStyles = makeStyles((theme) => ({
     width: "240px",
     position: "fixed",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   contentContainer: {
-    marginLeft: '240px'
+    marginLeft: "240px",
   },
   headerContainer: {
     padding: "10px",
     alignItems: "center",
     position: "static",
-  }
+  },
 }));
 
 function ResponsiveDrawer(props) {
-  const { window } = props;
+  // const { window } = props;
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   // const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  
+  const [currentTab, setCurrrentTab] = React.useState("profile");
 
-  
-  const [currentTab,setCurrrentTab] = React.useState('profile');
-  
+  const counter = useSelector((state) => state.counter);
+  const currentUser = useSelector((state) => state.currentUser);
+  const dispatch = useDispatch();
+
+  const user = { name: "Rei" };
+
+  useEffect(() => {
+    dispatch(allActions.userActions.setUser(user));
+  }, []);
 
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem button>
         <Profile
           onClick={() => {
-            setCurrrentTab('profile')
+            setCurrrentTab("profile");
           }}
         />
       </ListItem>
       <ListItem button>
         <Employees
           onClick={() => {
-            setCurrrentTab('employee')
+            setCurrrentTab("employee");
           }}
         />
       </ListItem>
       <ListItem button>
         <Work
           onClick={() => {
-            setCurrrentTab('work')
+            setCurrrentTab("work");
           }}
         />
       </ListItem>
     </div>
   );
 
-  const tab = currentTab === 'profile' ? <ProfileTabs /> : currentTab === 'work' ? <WorkTabs /> : <EmployeesGroupTabs />
-  
+  const tab =
+    currentTab === "profile" ? (
+      <ProfileTabs />
+    ) : currentTab === "work" ? (
+      <WorkTabs />
+    ) : (
+      <EmployeesGroupTabs />
+      // <CountriesContainer />
+    );
+
   return (
     <div>
+      {/* <div>
+        {currentUser.loggedIn ? (
+          <>
+            <h1>Hello, {currentUser.user.name}</h1>
+            <button onClick={() => dispatch(allActions.userActions.logOut())}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <h1>Login</h1>
+            <button
+              onClick={() => dispatch(allActions.userActions.setUser(user))}
+            >
+              Login as Rei
+            </button>
+          </>
+        )}
+        <h1>Counter: {counter}</h1>
+        <button onClick={() => dispatch(allActions.counterActions.increment())}>
+          Increase Counter
+        </button>
+        <button onClick={() => dispatch(allActions.counterActions.decrement())}>
+          Decrease Counter
+        </button>
+      </div> */}
+
       {drawer}
       <div className={classes.contentContainer}>
         <AppBar className={classes.headerContainer}>
@@ -104,12 +149,12 @@ function ResponsiveDrawer(props) {
   );
 }
 
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
+// ResponsiveDrawer.propTypes = {
+//   /**
+//    * Injected by the documentation to work in an iframe.
+//    * You won't need it on your project.
+//    */
+//   window: PropTypes.func,
+// };
 
 export default ResponsiveDrawer;
