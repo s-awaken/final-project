@@ -50,37 +50,9 @@ function ResponsiveDrawer(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  // const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  // const [manager, setState] = React.useState(true);
-
-  // const activateProfile = () => setState({
-  //   ...state,
-  //   isActiveProfile: true,
-  //   isActiveEmployees: false,
-  //   isActiveWork: false
-  // })
-  // const activateProfile = () => {
-  //   setState(prev => ({...prev,isActiveProfile:true,isActiveEmployees:false, isActiveWork:false }))
-  // }
-  // const activateEmployees = () => {
-  //   setState(prev => ({...prev,isActiveProfile:false,isActiveEmployees:true, isActiveWork:false }))
-  // }
-  // const activateWork = () => {
-  //   setState(prev => ({...prev,isActiveProfile:false,isActiveEmployees:false, isActiveWork:true }))
-  // }
-  // const activateEmployees = () => setState({
-  //   ...state,
-  //   isActiveEmployees: true,
-  //   isActiveProfile: false,
-  //   isActiveWork: false
-  // })
-  // const activateWork = () => setState({
-  //   ...state,
-  //   isActiveWork: true,
-  //   isActiveProfile: false,
-  //   isActiveEmployees: false
-  // })
+  
 
   
   const [currentTab,setCurrrentTab] = React.useState('profile');
