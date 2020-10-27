@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux'
-import counter from './counter';
 import currentUser from './currentUser'
-import countries from './countries'
+import itemSelector from './itemSelector'
+import employeeGroupSelector from './employeeGroupSelector'
 const rootReducer = combineReducers({
-  counter,
   currentUser,
-  countries
+  itemSelector,
+  employeeGroupSelector
 });
 export default rootReducer;
