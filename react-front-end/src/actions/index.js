@@ -1,9 +1,8 @@
-import counterActions from './counterActions'
+
 import userActions from './userActions'
-import countriesActions from './countriesActions'
+import itemSelectorAction from './itemSelectorAction'
 const allActions = {
-  counterActions,
   userActions,
-  countriesActions
+  itemSelectorAction
 }
 export default allActions;
