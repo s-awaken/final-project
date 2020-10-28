@@ -3,12 +3,22 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  // const user_id = req.session.id;
+  getEmployeeAttendanceInMonth('2020-10-01','2020-11-28',1)
+  .then((result)=>{
+    console.log(result)
+    res.json(result)
+  })
   
   
 });
-router.post('/',(req,res)=>{
-
+router.get('/1',(req,res)=>{
+  updateAttendance(1)
+  .then((result)=>{
+    res.json(result)
+  })
+  .catch((error)=>{
+    res.json(error)
+  })
 })
 
 module.exports = router;

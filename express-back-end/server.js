@@ -21,7 +21,7 @@ app.use(cookieSession({
 const attendance = require('./routes/attendance')
 const registry = require("./routes/registry")
 
-app.use('./attendance',attendance)
+app.use('/attendance',attendance)
 app.use('/registry',registry);
 
 

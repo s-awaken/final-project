@@ -31,6 +31,7 @@ exports.up = (knex) => {
     .createTable("attendances",(table)=>{
       table.increments("id").primary();
       table.date('date').defaultTo(knex.fn.now())
+      // table.unique('date')
       table.integer("employee_id").unsigned();
       table.foreign("employee_id").references("id").inTable("employees");
     })
