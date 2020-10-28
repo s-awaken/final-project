@@ -20,9 +20,11 @@ app.use(cookieSession({
 // Sample GET route
 const attendance = require('./routes/attendance')
 const registry = require("./routes/registry")
+const departments = require('./routes/departments')
 
 app.use('/attendance',attendance)
 app.use('/registry',registry);
+app.use('/departments',departments)
 
 
 
