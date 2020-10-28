@@ -1,13 +1,13 @@
-import React from "react";
+import './App.css';
 
-import "components/App.scss";
+import HeaderMenu from "./components/Menu"
 
-import Header from 'components/Header'
-
-export default function Application(props) {
+function App() {
   return (
-    <main className="layout">
-      <Header/>
-    </main>
+    <div className="App">
+      <HeaderMenu />
+    </div>
   );
 }
+
+export default App;
