@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
+
+
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 
+import EmployeesContainer from '../containers/EmployeesGroupsContainer'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -47,22 +49,29 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EmployeesBar() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+const groups = ["group 1", "group 2", "group 3"]
+export default function EmployeesBar(props) {
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const classes = useStyles();
+
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="Group One" {...a11yProps(0)} />
-          <Tab label="Group Two" {...a11yProps(1)} />
-          <Tab label="Group Three" {...a11yProps(2)} />
-        </Tabs>
+      <AppBar position="static" display="flex" >
+        <h2>GROUPS</h2>
       </AppBar>
-      </div>)
+      <Grid container spacing={3}>
+        {groups.map(group => {
+          return (
+            <Grid item xs>
+              <EmployeesContainer
+              name={group}
+              task={"Do React"}
+              groupNames={["Person One", "Person Two", "Person 3"]} />
+            </Grid>
+          )
+        })}
+      </Grid>
+    </div>
+  )
 }

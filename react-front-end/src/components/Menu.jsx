@@ -1,16 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import ListItem from "@material-ui/core/ListItem";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 
 
 import allActions from "../actions";
-import Profile from "./Profile";
-import Employees from "./Employees";
-import Work from "./Work";
 
-import EmployeesBar from "./bars/EmployeesGroupBar"
+import Profile from "./drawer/ProfileButton";
+import Employees from "./drawer/EmployeesButton";
+import Work from "./drawer/WorkButton";
+
+import EmployeesBar from "./bars/EmployeesBar"
 import ProfileBar from "./bars/ProfileBar"
 import WorkBar from "./bars/WorkBar"
 
@@ -44,13 +45,14 @@ function ResponsiveDrawer() {
   const classes = useStyles();
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
+  const employeeGroupSelector = useSelector((state) => state.employeeGroupSelector.selected)
   const dispatch = useDispatch();
 
-  const user = { name: "Rei" };
+  // const user = { name: "Rei" };
 
-  useEffect(() => {
-    dispatch(allActions.userActions.setUser(user));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(allActions.userActions.setUser(user));
+  // }, []);
 
   const drawer = (
     <div className={classes.drawerContainer}>
@@ -84,9 +86,10 @@ function ResponsiveDrawer() {
     ) :
       itemSelector === "work" ? (
         <WorkBar/>
-      ) : (
-        <EmployeesBar/>
-      )
+    ) : (
+          <EmployeesBar selector={employeeGroupSelector} actions={allActions}/>
+        )
+
   return (
     <div>
       {drawer}

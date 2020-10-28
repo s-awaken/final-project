@@ -1,6 +1,6 @@
 import './App.css';
 
-import HeaderMenu from "./components/HeaderMenu"
+import HeaderMenu from "./components/Menu"
 
 function App() {
   return (
