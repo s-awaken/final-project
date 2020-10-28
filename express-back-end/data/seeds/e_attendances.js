@@ -8,9 +8,9 @@ exports.seed = function(knex) {
         // {id: 1, colName: 'rowValue1'},
         // {id: 2, colName: 'rowValue2'},
         // {id: 3, colName: 'rowValue3'},
-        {present:true,employee_id:1,datetime:"2020-10-27 23:19:34"},
-        {present:true,employee_id:2,datetime:"2020-10-28 23:19:34"},
-        {present:false,employee_id:3}
+        {employee_id:1,date:'2020-10-29'},
+        {employee_id:1,date:'2020-10-27'},
+        {employee_id:3}
 
 
         

@@ -18,9 +18,13 @@ app.use(cookieSession({
 }));
 
 // Sample GET route
+const attendance = require('./routes/attendance')
 const registry = require("./routes/registry")
 
+app.use('./attendance',attendance)
 app.use('/registry',registry);
+
+
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
