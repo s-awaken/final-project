@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import Profile from '../Profile'
+import Profile from '../profile'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
