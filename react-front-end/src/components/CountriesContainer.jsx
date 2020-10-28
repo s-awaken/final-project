@@ -9,7 +9,9 @@ export default function CountriesContainer(){
   const dispatch = useDispatch()
 
   useEffect(()=>{
-    dispatch(allActions.countriesActions.fetchCountries())
+    if(countries.length <1){
+      dispatch(allActions.countriesActions.fetchCountries())
+    }
   },[])
 
   return loading ? (
