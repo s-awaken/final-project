@@ -30,8 +30,7 @@ exports.up = (knex) => {
     })
     .createTable("attendances",(table)=>{
       table.increments("id").primary();
-      table.boolean("present");
-      table.datetime('datetime', { useTz: true })
+      table.date('date').defaultTo(knex.fn.now())
       table.integer("employee_id").unsigned();
       table.foreign("employee_id").references("id").inTable("employees");
     })
