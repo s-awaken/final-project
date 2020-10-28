@@ -14,7 +14,7 @@ exports.up = (knex) => {
       table.integer("department_id").unsigned();
       table.foreign("department_id").references("id").inTable("departments");
     })
-    .createTable("KPI",(table)=>{
+    .createTable("k_p_i",(table)=>{
       table.increments("id").primary();
       table.integer("current_score");
       table.integer("employee_id").unsigned();
@@ -35,7 +35,7 @@ exports.up = (knex) => {
       table.integer("employee_id").unsigned();
       table.foreign("employee_id").references("id").inTable("employees");
     })
-    .createTable("employee's_Tasks",(table)=>{
+    .createTable("employee_tasks",(table)=>{
       table.increments("id").primary();
       table.integer("employee_id").unsigned();
       table.foreign("employee_id").references("id").inTable("employees")
@@ -48,10 +48,10 @@ exports.up = (knex) => {
 };
 exports.down = (knex) => {
   return knex.schema
-  .dropTableIfExists("employee's_Tasks")
+  .dropTableIfExists("employee_tasks")
   .dropTableIfExists("attendances")
   .dropTableIfExists("tasks")
-  .dropTableIfExists("KPI")
+  .dropTableIfExists("k_p_i")
   .dropTableIfExists("employees")
   .dropTableIfExists("departments")
 
