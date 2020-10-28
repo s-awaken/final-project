@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  getEmployeeAttendanceInMonth('2020-10-01','2020-11-28',1)
+  getEmployeeAttendanceInMonth('2020-10-01','2020-10-27',1)
   .then((result)=>{
     console.log(result)
     res.json(result)

@@ -32,8 +32,10 @@ const getEmployeeAttendanceInMonth = (startDate,lastDate,employee_id)=>{
   // .count('date')
   
   .then((result)=>{
+    // return result
     let countDays = result.length
     return {countDays}
+    
   })
 
 }
