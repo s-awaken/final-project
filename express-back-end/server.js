@@ -18,11 +18,23 @@ app.use(cookieSession({
 }));
 
 // Sample GET route
-const login = require("./routes/login")
+const registry = require("./routes/registry")
 
-app.use('/login',login);
+app.use('/registry',registry);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
   console.log(`Express seems to be listening on port ${PORT} so that's pretty good 👍`);
 });
+
+// const db = require('./data/db')
+
+// app.get('/api/data', (req, res) => {
+//   db("employees").where('id',1)
+//   .then((result)=>{
+//     console.log(result);
+//     res.json({message:result[0].youdianyisi})
+//   })
+//   // res.json({message:'hello'})
+
+// });
