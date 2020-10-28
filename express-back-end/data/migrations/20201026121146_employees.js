@@ -16,7 +16,7 @@ exports.up = (knex) => {
     })
     .createTable("KPI",(table)=>{
       table.increments("id").primary();
-      table.integer("quantity");
+      table.integer("current_score");
       table.integer("employee_id").unsigned();
       table.foreign("employee_id").references("id").inTable("employees");
     })
@@ -25,7 +25,8 @@ exports.up = (knex) => {
       table.integer("employee_id").unsigned();
       table.foreign("employee_id").references("id").inTable("employees");
       table.text("content")
-      table.string("status")
+      table.text("name")
+      
     })
     .createTable("attendances",(table)=>{
       table.increments("id").primary();
@@ -41,6 +42,7 @@ exports.up = (knex) => {
       table.integer("task_id").unsigned();
       table.foreign("task_id").references("id").inTable("tasks");
       table.integer("score");
+      table.string("status")
       
     })
 };
