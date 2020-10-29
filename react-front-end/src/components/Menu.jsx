@@ -48,6 +48,7 @@ function ResponsiveDrawer() {
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
   const employeeGroupSelector = useSelector((state) => state.employeeGroupSelector.selected)
+  const taskSelector = useSelector((state) => state.currentTaskForGroup)
   const dispatch = useDispatch();
 
   const drawer = (
@@ -85,9 +86,13 @@ function ResponsiveDrawer() {
       <ProfileBar/>
     ) :
       itemSelector === "work" ? (
-        <WorkBar/>
+        <WorkBar action={allActions}/>
     ) : (
-          <EmployeesBar selector={employeeGroupSelector} actions={allActions}/>
+          <EmployeesBar
+            selector={employeeGroupSelector}
+            actions={allActions}
+            tasks={taskSelector}
+          />
         )
 
   return (
