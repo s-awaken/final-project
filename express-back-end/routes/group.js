@@ -3,6 +3,7 @@ const router = express.Router();
 const { getGroups, getGroupById,changeGroup } = require("../data/queryMethod/group");
 
 router.get("/", (req, res) => {
+  
   getGroups().then((result) => {
     // console.log(result)
     let tasks = {};

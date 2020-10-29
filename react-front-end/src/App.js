@@ -8,6 +8,7 @@ import HeaderMenu from "./components/Menu"
 import SignIn from './components/Sign-in'
 
 function App() {
+  
   const login = useSelector((state) => state.currentUser.loggedIn)
   const renderPage =
     login ? (
