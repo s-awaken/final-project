@@ -10,22 +10,22 @@ import SignIn from './components/ManagerSign-in'
 import EmployeeSignIn from './components/EmployeeSign-in'
 
 function App() {
-  const login = useSelector((state)=> state.currentUser.loggedIn)
+  const login = useSelector((state) => state.currentUser.loggedIn)
   const manager = useSelector((state) => state.managerLogin.manager)
   
-  const renderPage = 
+  const renderPage =
     manager ? (
       login ? (
-        <ManagerMenu/>
+        <ManagerMenu />
       ) : (
-        <SignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
-      )
+          <SignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
+        )
     ) : (
         login ? (
           <EmployeeMenu />
         ) : (
-          <EmployeeSignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
-        )
+            <EmployeeSignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
+          )
       )
   return (
     <div className="App">
@@ -33,5 +33,4 @@ function App() {
     </div>
   );
 }
-​
 export default App;

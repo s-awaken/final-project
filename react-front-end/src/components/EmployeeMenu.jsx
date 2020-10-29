@@ -10,7 +10,6 @@ import allActions from "../actions";
 import Profile from "./drawer/ProfileButton";
 import Work from "./drawer/WorkButton";
 
-import EmployeesBar from "./bars/EmployeesBar"
 import ProfileBar from "./bars/ProfileBar"
 import WorkBar from "./bars/WorkBar"
 
@@ -46,8 +45,6 @@ function EmployeeMenu() {
   const classes = useStyles();
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
-  const employeeGroupSelector = useSelector((state) => state.employeeGroupSelector.selected)
-  const taskSelector = useSelector((state) => state.currentTaskForGroup)
   const dispatch = useDispatch();
 
   const drawer = (
