@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import ListItem from "@material-ui/core/ListItem";
 import { makeStyles } from "@material-ui/core/styles";
-
+import Divider from '@material-ui/core/Divider'
 
 import allActions from "../actions";
 
@@ -14,6 +14,8 @@ import Work from "./drawer/WorkButton";
 import EmployeesBar from "./bars/EmployeesBar"
 import ProfileBar from "./bars/ProfileBar"
 import WorkBar from "./bars/WorkBar"
+
+import Logout from './Logout'
 
 const useStyles = makeStyles((theme) => ({
   // necessary for content to be below app bar
@@ -46,13 +48,8 @@ function ResponsiveDrawer() {
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
   const employeeGroupSelector = useSelector((state) => state.employeeGroupSelector.selected)
+  const taskSelector = useSelector((state) => state.currentTaskForGroup)
   const dispatch = useDispatch();
-
-  // const user = { name: "Rei" };
-
-  // useEffect(() => {
-  //   dispatch(allActions.userActions.setUser(user));
-  // }, []);
 
   const drawer = (
     <div className={classes.drawerContainer}>
@@ -77,6 +74,10 @@ function ResponsiveDrawer() {
           }}
         />
       </ListItem>
+      <Divider />
+      <ListItem >
+        <Logout action={allActions.userActions}/>
+      </ListItem>
     </div>
   );
 
@@ -85,9 +86,13 @@ function ResponsiveDrawer() {
       <ProfileBar/>
     ) :
       itemSelector === "work" ? (
-        <WorkBar/>
+        <WorkBar action={allActions}/>
     ) : (
-          <EmployeesBar selector={employeeGroupSelector} actions={allActions}/>
+          <EmployeesBar
+            selector={employeeGroupSelector}
+            actions={allActions}
+            tasks={taskSelector}
+          />
         )
 
   return (
