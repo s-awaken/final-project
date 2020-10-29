@@ -2,46 +2,53 @@ import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles';
 
-import Container from '@material-ui/core/Container'
-import Divider from '@material-ui/core/Divider';
-import Typography from '@material-ui/core/Typography';
-import Collapse from '@material-ui/core/Collapse';
 import Button from '@material-ui/core/Button'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 import Grid from '@material-ui/core/Grid'
+import Input from '@material-ui/core/Input'
+import TextField from '@material-ui/core/TextField'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: 200,
+    },
+  },
+}));
 
 export default function WorkContainer(props) {
   const [open, setOpen] = React.useState(true);
-
+  const classes = useStyles();
   const handleClick = () => {
     setOpen(!open);
   };
   return (
     <div>
       <Grid container spacing={12}>
-        <Grid item xs>
+        <Grid item xs orientation="vertical">
           <h3>Create Task for Employee</h3>
-          <ButtonGroup orientation="vertical">
+          <form className={classes.root}>
+            <TextField defaultValue="Employee Name" />
+            <TextField defaultValue="Group" />
+            <TextField defaultValue="Task Name"/>
+            <TextField defaultValue="Task Description" />
             <Button color="primary">Create Task</Button>
-            <Button color="warning">Edit</Button>
-            <Button color="danger">Delete</Button>
-          </ButtonGroup>
+          </form>
         </Grid>
         <Grid item xs>
           <h3>Review Employee's Tasks</h3>
-            <ButtonGroup orientation="vertical">
-            <Button color="primary">Submit</Button>
-            <Button color="warning">Rate</Button>
-            <Button color="danger">Send Back</Button>
-          </ButtonGroup>
+          <form>
+            <Input defaultValue="Quality" />
+            <Button color="primary">Review</Button>
+          </form>
+            
         </Grid>
         <Grid item xs>
           <h3>Create Task for Self</h3>
-          <ButtonGroup orientation="vertical">
-            <Button color="primary">Create Task</Button>
-            <Button color="warning">Edit</Button>
-            <Button color="danger">Delete</Button>
-          </ButtonGroup>
+          <Input defaultValue="Task Name"/>
+          <Button color="primary">Create Task</Button>
         </Grid>
       </Grid>
     </div>
