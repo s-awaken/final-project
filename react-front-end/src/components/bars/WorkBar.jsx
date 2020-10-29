@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import WorkContainer from '../containers/Work'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -41,12 +42,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function WorkBar() {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <h2>Work</h2>
       </AppBar>
+      <WorkContainer/>
     </div>
   )
 }

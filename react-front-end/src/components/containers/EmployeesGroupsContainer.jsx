@@ -13,6 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
+import Grid from '@material-ui/core/Grid'
+import Paper from '@material-ui/core/Paper'
 
 const useStyles = makeStyles((theme) => ({
   root: {
