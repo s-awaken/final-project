@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 const generalInfo = {
   name: "Syrym Zhauken",
   age: "21",
+  manager: "manager",
   department: "Development",
   KPI: {
     attendance: "3.4",
