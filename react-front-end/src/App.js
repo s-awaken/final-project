@@ -8,13 +8,23 @@ import HeaderMenu from "./components/Menu"
 import SignIn from './components/Sign-in'
 
 function App() {
+
+  const login = useSelector((state)=> state.currentUser.loggedIn)
+  const manager = useSelector((state) => state.managerLogin.manager)
   
-  const login = useSelector((state) => state.currentUser.loggedIn)
-  const renderPage =
-    login ? (
-      <HeaderMenu />
+  const renderPage = 
+    manager ? (
+      login ? (
+        <ManagerMenu/>
+      ) : (
+        <SignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
+      )
     ) : (
-        <SignIn action={allActions.userActions}/>
+        login ? (
+          <EmployeeMenu />
+        ) : (
+          <EmployeeSignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
+        )
       )
   return (
     <div className="App">
