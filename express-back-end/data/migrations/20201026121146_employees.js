@@ -26,7 +26,7 @@ exports.up = (knex) => {
       // table.foreign("employee_id").references("id").inTable("employees");
       table.text("content")
       table.text("name")
-      table.string("status")
+      table.boolean("status").defaultTo(false)
       table.date('create_at').defaultTo(knex.fn.now())
       table.date('finished_at')
       
