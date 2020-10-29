@@ -23,12 +23,15 @@ const registry = require("./routes/registry")
 const departments = require('./routes/departments')
 const group = require('./routes/group')
 const kpi = require('./routes/kpi')
+const task =require('./routes/task')
 
 app.use('/attendance',attendance)
 app.use('/registry',registry);
-app.use('/departments',departments)
-app.use('/group',group)
-app.use('/kpi',kpi)
+app.use('/departments',departments);
+app.use('/group',group);
+app.use('/kpi',kpi);
+app.use('/task',task)
+
 
 
 
