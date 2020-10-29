@@ -9,6 +9,7 @@ export default function Logout(props) {
   const logout = (event) => {
     event.preventDefault()
     dispatch(props.action.logOut())
+    localStorage.removeItem("user")
   }
 
   return (
