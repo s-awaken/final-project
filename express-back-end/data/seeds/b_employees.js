@@ -24,7 +24,13 @@ exports.seed = function (knex) {
           last_name: "Last",
           is_manager: false,
           department_id: 3,
-        }
+        },
+        {
+          first_name: "KPIFirst",
+          last_name: "KPILast",
+          is_manager: false,
+          department_id: 3,
+        },
       ]);
     });
 };
