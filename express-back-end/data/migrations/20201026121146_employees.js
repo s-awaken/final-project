@@ -22,10 +22,13 @@ exports.up = (knex) => {
     })
     .createTable("tasks",(table)=>{
       table.increments("id").primary();
-      table.integer("employee_id").unsigned();
-      table.foreign("employee_id").references("id").inTable("employees");
+      // table.integer("employee_id").unsigned();
+      // table.foreign("employee_id").references("id").inTable("employees");
       table.text("content")
       table.text("name")
+      table.string("status")
+      table.date('create_at').defaultTo(knex.fn.now())
+      table.date('finished_at')
       
     })
     .createTable("attendances",(table)=>{
@@ -42,7 +45,9 @@ exports.up = (knex) => {
       table.integer("task_id").unsigned();
       table.foreign("task_id").references("id").inTable("tasks");
       table.integer("score");
-      table.string("status")
+      
+
+      
       
     })
 };

@@ -21,10 +21,12 @@ app.use(cookieSession({
 const attendance = require('./routes/attendance')
 const registry = require("./routes/registry")
 const departments = require('./routes/departments')
+const group = require('./routes/group')
 
 app.use('/attendance',attendance)
 app.use('/registry',registry);
 app.use('/departments',departments)
+app.use('/group',group)
 
 
 

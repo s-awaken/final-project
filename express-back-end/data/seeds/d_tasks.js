@@ -8,9 +8,9 @@ exports.seed = function(knex) {
         // {id: 1, colName: 'rowValue1'},
         // {id: 2, colName: 'rowValue2'},
         // {id: 3, colName: 'rowValue3'},
-        {employee_id:1,content:"this is first content",name:"Name1"},
-        {employee_id:2,content:"this is second content",name:"Name2"},
-        {employee_id:3,content:"this is third content",name:"Name3"},
+        {content:"this is first content",name:"task1",status:"completed"},
+        {content:"this is second content",name:"task2",status:"completed"},
+        {content:"this is third content",name:"task3",status:"inprogress"},
 
 
         
