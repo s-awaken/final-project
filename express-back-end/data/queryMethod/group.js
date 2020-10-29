@@ -19,8 +19,16 @@ const getGroupById = (id)=>{
   })
 }
 const changeGroup = (employeeId,currentTaskId,newTaskId)=>{
-  return db('')
-  .join('employees','employees.id','=','employee_tasks.task_id')
+  return db('employee_tasks')
+  .returning('*')
+  .where(function(){
+    this.where('task_id',currentTaskId)
+    .andWhere('employee_id',employeeId)
+  })
+  .update({task_id:newTaskId})
+  .then((result)=>{
+    return result
+  })
 
 }
 
