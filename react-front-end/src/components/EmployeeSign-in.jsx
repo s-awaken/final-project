@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn(props) {
+export default function EmployeeSignIn(props) {
   const classes = useStyles();
 
   const dispatch = useDispatch()
@@ -55,8 +55,12 @@ export default function SignIn(props) {
   const handleLogin = (event) => {
     event.preventDefault();
     dispatch(props.action.setUser())
+    localStorage.setItem("user", JSON.stringify({type: "employee", name: "someone"}))
   }
-
+  const handleEmployee = (event) => {
+    event.preventDefault();
+    dispatch(props.changeLogin.manager())
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -65,7 +69,7 @@ export default function SignIn(props) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Employee Sign In
         </Typography>
         <form className={classes.form} noValidate onSubmit={handleLogin}>
           <TextField
@@ -105,14 +109,14 @@ export default function SignIn(props) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
-              </Link>
+              <Button variant="body2">
+                Register
+              </Button>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
-              </Link>
+              <Button variant="body2" onClick={handleEmployee}>
+                Manager
+              </Button>
             </Grid>
           </Grid>
         </form>

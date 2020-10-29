@@ -10,7 +10,6 @@ const currentUser = (state = {},action)=>{
         ...state,
         user:action.payload,
         loggedIn:true
-
       }
     case "LOG_OUT":
       return {
