@@ -8,7 +8,6 @@ import Divider from '@material-ui/core/Divider'
 import allActions from "../actions";
 
 import Profile from "./drawer/ProfileButton";
-import Employees from "./drawer/EmployeesButton";
 import Work from "./drawer/WorkButton";
 
 import EmployeesBar from "./bars/EmployeesBar"
@@ -42,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ResponsiveDrawer() {
+function EmployeeMenu() {
 
   const classes = useStyles();
 
@@ -53,21 +52,14 @@ function ResponsiveDrawer() {
 
   const drawer = (
     <div className={classes.drawerContainer}>
-      <ListItem button>
+      <ListItem>
         <Profile
           onClick={() => {
             dispatch(allActions.itemSelectorAction.profile())
           }}
         />
       </ListItem>
-      <ListItem button>
-        <Employees
-          onClick={() => {
-            dispatch(allActions.itemSelectorAction.employees());
-          }}
-        />
-      </ListItem>
-      <ListItem button>
+      <ListItem>
         <Work
           onClick={() => {
             dispatch(allActions.itemSelectorAction.work());
@@ -84,16 +76,9 @@ function ResponsiveDrawer() {
   const bar = 
     itemSelector === "profile" ? (
       <ProfileBar/>
-    ) :
-      itemSelector === "work" ? (
-        <WorkBar action={allActions}/>
     ) : (
-          <EmployeesBar
-            selector={employeeGroupSelector}
-            actions={allActions}
-            tasks={taskSelector}
-          />
-        )
+        <WorkBar action={allActions}/>
+    )
 
   return (
     <div>
@@ -109,4 +94,4 @@ function ResponsiveDrawer() {
   );
 }
 
-export default ResponsiveDrawer;
+export default EmployeeMenu;
