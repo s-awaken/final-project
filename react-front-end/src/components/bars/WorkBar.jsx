@@ -55,13 +55,13 @@ const exampleTasks = [
     task:"Talk to Henry"
   }
 ]
-export default function WorkBar() {
+export default function WorkBar(props) {
   const userName = "Syrym"
   const classes = useStyles();
   const manager = useSelector((state) => state.managerLogin.manager)
   const workRenderContainer =
     manager ? (
-      <WorkContainer/>
+      <WorkContainer tasks={props.tasks} />
     ) : (
         <WorkEmployeeContainer tasks={exampleTasks} name={userName}/>
     )

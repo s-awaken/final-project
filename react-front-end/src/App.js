@@ -1,5 +1,5 @@
 import './App.css';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import React from 'react'
 import allActions from "./actions";
 
@@ -14,11 +14,17 @@ import Test from './components/Test'
 function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
   const manager = useSelector((state) => state.managerLogin.manager)
+  const tasks = useSelector((state) => state.tasks.tasks);
+  const dispatch = useDispatch()
+  
+  React.useEffect(() => {
+    dispatch(allActions.tasksActions.fetchTasks());
+  }, [])
   
   const renderPage =
     manager ? (
       login ? (
-        <ManagerMenu />
+        <ManagerMenu tasks={tasks}/>
       ) : (
           <SignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
         )

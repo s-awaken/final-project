@@ -42,13 +42,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ResponsiveDrawer() {
+function ManagerMenu(props) {
 
   const classes = useStyles();
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
-  const employeeGroupSelector = useSelector((state) => state.employeeGroupSelector.selected)
-  const taskSelector = useSelector((state) => state.currentTaskForGroup)
   const dispatch = useDispatch();
 
   const drawer = (
@@ -86,12 +84,13 @@ function ResponsiveDrawer() {
       <ProfileBar/>
     ) :
       itemSelector === "work" ? (
-        <WorkBar action={allActions}/>
+        <WorkBar
+          action={allActions}
+          tasks={props.tasks}
+        />
     ) : (
           <EmployeesBar
-            selector={employeeGroupSelector}
             actions={allActions}
-            tasks={taskSelector}
           />
         )
 
@@ -109,4 +108,4 @@ function ResponsiveDrawer() {
   );
 }
 
-export default ResponsiveDrawer;
+export default ManagerMenu;
