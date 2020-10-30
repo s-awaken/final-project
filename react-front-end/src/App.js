@@ -38,9 +38,6 @@ function App() {
   return (
     <div className="App">
       {renderPage}
-      <Test/>
-
-      
     </div>
   );
 }

@@ -7,9 +7,9 @@ import Divider from '@material-ui/core/Divider'
 
 import allActions from "../actions";
 
-import Profile from "./drawer/ProfileButton";
-import Employees from "./drawer/EmployeesButton";
-import Work from "./drawer/WorkButton";
+import ProfileDrawer from "./drawer/ProfileButton";
+import EmployeesDrawer from "./drawer/EmployeesButton";
+import WorkDrawer from "./drawer/WorkButton";
 
 import EmployeesBar from "./bars/EmployeesBar"
 import ProfileBar from "./bars/ProfileBar"
@@ -52,21 +52,21 @@ function ManagerMenu(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
-        <Profile
+        <ProfileDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.profile())
           }}
         />
       </ListItem>
       <ListItem>
-        <Employees
+        <EmployeesDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.employees());
           }}
         />
       </ListItem>
       <ListItem>
-        <Work
+        <WorkDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.work());
           }}
