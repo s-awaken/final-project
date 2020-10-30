@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
   
 });
 router.get("/:employee_id", (req, res) => {
-  const{employee_id} = req.query
+  const {employee_id} = req.query
   getTasksByEmployeeId(employee_id)
   .then((result)=>{
     res.json(result)
@@ -70,5 +70,19 @@ router.put(`/name`,(req,res)=>{
   })
 
 })
+
+router.put(`/status`,(req,res)=>{
+  console.log(req.body)
+  const {status,taskId,finished_at} = req.body
+  updateStatus(status,taskId,finished_at)
+  .then((result)=>{
+    res.json(result)
+  })
+  .catch((error)=>{
+    res.json(error)
+  })
+})
+
+
 
 module.exports = router;

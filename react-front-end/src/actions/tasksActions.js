@@ -52,6 +52,25 @@ const updateTaskName = (name,taskId)=>{
   }
 }
 
+const updateTaskContent = (content,taskId)=>{
+  return (dispatch)=>{
+    axios.put('http://localhost:8080/task/content',{content,taskId})
+    .then((response)=>{
+      return dispatch(fetchTasks())
+    })
+  }
+}
+const updateTaskStatus = (status,taskId,finished_at)=>{
+  return (dispatch)=>{
+    axios
+    .put(`http://localhost:8080/task/status`,{status,taskId,finished_at})
+    .then((response)=>{
+      return dispatch(fetchTasks())
+    })
+  }
+}
+
+
 
 
 const fetchTasksSuccess = (tasks)=>{
@@ -91,5 +110,7 @@ export default{
   fetchTasksByEmployeeId,
   createTask,
   updateTaskName,
+  updateTaskContent,
+  updateTaskStatus,
 }
 
