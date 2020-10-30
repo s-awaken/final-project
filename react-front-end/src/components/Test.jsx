@@ -43,6 +43,13 @@ export default function Test() {
     dispatch(allActions.tasksActions.updateTaskName("FXXXXK",2))
     
   }
+  const updateTaskContentButton = ()=>{
+    dispatch(allActions.tasksActions.updateTaskContent("Testing content!!!!!!",2))
+  }
+  const updateTaskStatusButton = ()=>{
+    dispatch(allActions.tasksActions.updateTaskStatus(true,1,"2020-11-23"))
+  }
+  
   return (
     <div>
       {/* {attendances.countDays}
@@ -54,6 +61,11 @@ export default function Test() {
 
           </br>
           {task.content}
+          <br></br>
+          {`${task.status}`}
+          <br>
+          </br>
+          {task.finished_at}
         </p>))}
 
       ------------
@@ -66,10 +78,12 @@ export default function Test() {
           {task.content}
         </p>
       ))}
+      {/* <button onClick={updateTaskStatusButton}>update task status Button</button>
+      <button onClick={updateTaskContentButton}>update task content Button</button> */}
 
 
-      <button onClick={attendancesButton}>Attendances Button</button>
-      <button onClick={departmentsButton}>Departments Button</button>
+      {/* <button onClick={attendancesButton}>Attendances Button</button>
+      <button onClick={departmentsButton}>Departments Button</button> */}
       <button onClick={createTaskButton}>Create task Button</button>
       <button onClick={updateTaskNameButton}>updateTaskNameButton</button>
       
