@@ -13,7 +13,6 @@ import Test from './components/Test'
 
 function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
-  // console.log(login)
   const manager = useSelector((state) => state.managerLogin.manager)
   const tasks = useSelector((state) => state.tasks.tasks);
   const dispatch = useDispatch()
@@ -38,7 +37,6 @@ function App() {
       )
   return (
     <div className="App">
-
       {renderPage}
     </div>
   );
