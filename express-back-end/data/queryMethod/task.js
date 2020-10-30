@@ -25,6 +25,7 @@ const getTasksByEmployeeId = (employee_id)=>{
 
 }
 
+
 const getTaskById = (taskId)=>{
   return db('tasks')
   .where('id',taskId)
@@ -85,6 +86,8 @@ const updateStatus = (status,taskId,finished_at)=>{
   }
 
 }
+
+
 
 
 
