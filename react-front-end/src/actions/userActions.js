@@ -1,22 +1,19 @@
 const SET_USER = "SET_USER";
 const LOG_OUT = "LOG_OUT";
 
-
-
-const setUser = (userObj)=>{
-
+const setUser = (userObj) => {
   return {
-    type:SET_USER,
-    payload:userObj
-  }
+    type: SET_USER,
+    payload: userObj,
+  };
 };
-const logOut = ()=>{
-  return{
-    type:LOG_OUT
-  }
+const logOut = () => {
+  return {
+    type: LOG_OUT,
+  };
 };
 
-export default{
+export default {
   setUser,
-  logOut
-}
+  logOut,
+};
