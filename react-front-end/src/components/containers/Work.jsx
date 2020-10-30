@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography'
 
 export default function WorkContainer(props) {
   const [taskName, setTaskName] = React.useState("")
-
+  const [editTaskName, setEditTaskName] = React.useState("")
   const dispatch = useDispatch()
 
   const createTask = (event) => {
@@ -21,10 +21,13 @@ export default function WorkContainer(props) {
   const saveTask = () => {
     dispatch(allActions.tasksActions.createTask(taskName))
   }
+  const editTask = (event) => {
+    setEditTaskName(event.tagret.value)
+  }
   return (
     <div>
       <Grid container spacing={12}>
-        <Grid item xs orientation="vertical">
+        <Grid item xs >
           <Paper>
             <h3>Create Task for Employee</h3>
             <form onSubmit={event => event.preventDefault()}
@@ -38,18 +41,7 @@ export default function WorkContainer(props) {
                 onClick={()=> {saveTask()}}
               >Create Task</Button>
             </form>
-            <Typography>
-              {props.tasks.map((task, index) => (
-              <p key={index}>
-                &nbsp;{task.name}
-                <br>
-
-                </br>
-                {task.content}
-              </p>))}
-            </Typography>
           </Paper>
-
         </Grid>
         <Grid item xs>
           <h3>Review Employee's Tasks</h3>
@@ -60,9 +52,24 @@ export default function WorkContainer(props) {
             
         </Grid>
         <Grid item xs>
-          <h3>Create Task for Self</h3>
+          <h3>Edit Task for Employee's</h3>
           <Input defaultValue="Task Name"/>
-          <Button color="primary">Create Task</Button>
+          <Button color="primary">Edit</Button>
+        </Grid>
+        <Grid item xs={12}>
+          <h3>Recently Created Tasks</h3>
+          {/* <Paper>
+            <Typography>
+              {props.tasks.map((task, index) => (
+              <p key={index}>
+                &nbsp;{task.name}
+                <br>
+
+                </br>
+                {task.content}
+              </p>))}
+            </Typography>
+          </Paper> */}
         </Grid>
       </Grid>
     </div>

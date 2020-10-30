@@ -7,8 +7,8 @@ import Divider from '@material-ui/core/Divider'
 
 import allActions from "../actions";
 
-import Profile from "./drawer/ProfileButton";
-import Work from "./drawer/WorkButton";
+import ProfileDrawer from "./drawer/ProfileButton";
+import WorkDrawer from "./drawer/WorkButton";
 
 import ProfileBar from "./bars/ProfileBar"
 import WorkBar from "./bars/WorkBar"
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function EmployeeMenu() {
+function EmployeeMenu(props) {
 
   const classes = useStyles();
 
@@ -50,14 +50,14 @@ function EmployeeMenu() {
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
-        <Profile
+        <ProfileDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.profile())
           }}
         />
       </ListItem>
       <ListItem>
-        <Work
+        <WorkDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.work());
           }}
@@ -74,7 +74,7 @@ function EmployeeMenu() {
     itemSelector === "profile" ? (
       <ProfileBar/>
     ) : (
-        <WorkBar action={allActions}/>
+        <WorkBar tasks={props.tasks}/>
     )
 
   return (

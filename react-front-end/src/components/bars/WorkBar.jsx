@@ -40,33 +40,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
 }));
-const exampleTasks = [
-  {
-    id: 1,
-    task: "Do Employee Work Page"
-  }, {
-  id: 2,
-  task:"Connect to Backend",
-  }, {
-    id: 3,
-    task:"Pack Clothes",
-  }, {
-    id: 4,
-    task:"Talk to Henry"
-  }
-]
 export default function WorkBar(props) {
-  const userName = "Syrym"
   const classes = useStyles();
   const manager = useSelector((state) => state.managerLogin.manager)
   const workRenderContainer =
     manager ? (
       <WorkContainer tasks={props.tasks} />
     ) : (
-        <WorkEmployeeContainer tasks={exampleTasks} name={userName}/>
+        <WorkEmployeeContainer tasks={props.tasks}/>
     )
-  
-
   return (
     <div className={classes.root}>
       <AppBar position="static">

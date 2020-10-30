@@ -30,7 +30,7 @@ function App() {
         )
     ) : (
         login ? (
-          <EmployeeMenu />
+          <EmployeeMenu tasks={tasks}/>
         ) : (
             <EmployeeSignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
           )
