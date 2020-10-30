@@ -23,6 +23,8 @@ export default function LearnMoreProfile() {
   const theme = useTheme();
 
   return (
+    <div>
+      
     <React.Fragment>
       <ResponsiveContainer>
         <LineChart
@@ -48,5 +50,6 @@ export default function LearnMoreProfile() {
         </LineChart>
       </ResponsiveContainer>
     </React.Fragment>
+    </div>
   );
 }

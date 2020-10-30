@@ -9,6 +9,8 @@ import EmployeeMenu from "./components/EmployeeMenu"
 import SignIn from './components/ManagerSign-in'
 import EmployeeSignIn from './components/EmployeeSign-in'
 
+import Test from './components/Test'
+
 function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
   const manager = useSelector((state) => state.managerLogin.manager)
@@ -30,6 +32,9 @@ function App() {
   return (
     <div className="App">
       {renderPage}
+      <Test/>
+
+      
     </div>
   );
 }

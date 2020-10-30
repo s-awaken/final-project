@@ -10,8 +10,10 @@ router.get("/", (req, res) => {
   
   
 });
-router.get("/1", (req, res) => {
-  createDepartments("electronic")
+router.put("/:name", (req, res) => {
+  console.log(req.body)
+  const {name}=req.body
+  createDepartments(name)
   .then((result)=>{
     res.json(result)
   })

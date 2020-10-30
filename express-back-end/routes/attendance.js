@@ -3,16 +3,25 @@ const express = require('express');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  getEmployeeAttendanceInMonth('2020-10-01','2020-10-27',1)
+  
+  // console.log(req.query);
+  
+  const {startDate, lastDate,employee_id} = req.query;
+
+  getEmployeeAttendanceInMonth(startDate,lastDate,employee_id)
   .then((result)=>{
-    console.log(result)
+    // console.log(result)
     res.json(result)
   })
   
   
 });
-router.get('/1',(req,res)=>{
-  updateAttendance(1)
+router.put(`/:id`,(req,res)=>{
+
+  console.log(req.body)
+const {employee_id} = req.body;
+
+  updateAttendance(employee_id)
   .then((result)=>{
     res.json(result)
   })

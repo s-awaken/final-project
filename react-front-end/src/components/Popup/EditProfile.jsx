@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export default function EmployeesContainer(props) {
   const classes = useStyles()
   return (
+    <div>
     <Container maxWidth="sm">
       <form>
         <Input defaultValue={props.name}/>
@@ -31,5 +32,7 @@ export default function EmployeesContainer(props) {
         <Button>Submit Changes</Button>
       </form>
     </Container>
+      
+    </div>
   )
 }

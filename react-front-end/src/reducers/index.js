@@ -4,11 +4,17 @@ import itemSelector from './itemSelector'
 import employeeGroupSelector from './employeeGroupSelector'
 import currentTaskForGroup from './currentTaskForGroup'
 import managerLogin from './managerLogIn'
+import attendances from './attendanceReducer'
+import departments from  './departmentcReducer'
+import tasks from './tasksReducer'
 const rootReducer = combineReducers({
   currentUser,
   itemSelector,
   employeeGroupSelector,
   currentTaskForGroup,
-  managerLogin
+  managerLogin,
+  attendances,
+  departments,
+  tasks,
 });
 export default rootReducer;

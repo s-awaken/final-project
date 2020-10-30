@@ -5,13 +5,15 @@ const {
   updateTaskName,
   deleteTask,
   getTasks,
-  getTaskById
+  getTaskById,
+  getTasksByEmployeeId
+
 } = require('../data/queryMethod/task')
 const express = require('express');
 const router = express.Router();
 
 
-router.put("/", (req, res) => {
+router.get("/", (req, res) => {
   
   getTasks()
   .then((result)=>{
@@ -20,5 +22,53 @@ router.put("/", (req, res) => {
   
   
 });
+router.get("/:employee_id", (req, res) => {
+  const{employee_id} = req.query
+  getTasksByEmployeeId(employee_id)
+  .then((result)=>{
+    res.json(result)
+  })
+  
+  
+});
+
+router.put(`/createTask`,(req,res)=>{
+  console.log(req.body)
+  const {name} = req.body;
+  createTask(name)
+  .then((result)=>{
+    res.json(result)
+  })
+  .catch((error)=>{
+    res.json(error)
+  })
+
+})
+
+router.put(`/content`,(req,res)=>{
+  console.log(req.body)
+  const {content,taskId} = req.body;
+  updateTaskContent(content,taskId)
+  .then((result)=>{
+    res.json(result)
+  })
+  .catch((error)=>{
+    res.json(error)
+  })
+
+})
+
+router.put(`/name`,(req,res)=>{
+  console.log(req.body)
+  const {name,taskId} = req.body;
+  updateTaskName(name,taskId)
+  .then((result)=>{
+    res.json(result)
+  })
+  .catch((error)=>{
+    res.json(error)
+  })
+
+})
 
 module.exports = router;
