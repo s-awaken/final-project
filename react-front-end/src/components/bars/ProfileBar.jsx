@@ -5,7 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
-import Profile from '../containers/profile'
+import ProfileContainer from '../containers/profile'
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,7 +57,7 @@ export default function ProfileBar() {
       <AppBar position="static"> 
         <h2>Profile</h2>
       </AppBar>
-      <Profile generalInfo={generalInfo}/>
+      <ProfileContainer generalInfo={generalInfo}/>
     </div>
   )
 }

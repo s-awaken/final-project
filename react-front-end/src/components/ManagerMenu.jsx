@@ -7,9 +7,9 @@ import Divider from '@material-ui/core/Divider'
 
 import allActions from "../actions";
 
-import Profile from "./drawer/ProfileButton";
-import Employees from "./drawer/EmployeesButton";
-import Work from "./drawer/WorkButton";
+import ProfileDrawer from "./drawer/ProfileButton";
+import EmployeesDrawer from "./drawer/EmployeesButton";
+import WorkDrawer from "./drawer/WorkButton";
 
 import EmployeesBar from "./bars/EmployeesBar"
 import ProfileBar from "./bars/ProfileBar"
@@ -42,33 +42,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ResponsiveDrawer() {
+function ManagerMenu(props) {
 
   const classes = useStyles();
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
-  const employeeGroupSelector = useSelector((state) => state.employeeGroupSelector.selected)
-  const taskSelector = useSelector((state) => state.currentTaskForGroup)
   const dispatch = useDispatch();
 
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
-        <Profile
+        <ProfileDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.profile())
           }}
         />
       </ListItem>
       <ListItem>
-        <Employees
+        <EmployeesDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.employees());
           }}
         />
       </ListItem>
       <ListItem>
-        <Work
+        <WorkDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.work());
           }}
@@ -86,12 +84,13 @@ function ResponsiveDrawer() {
       <ProfileBar/>
     ) :
       itemSelector === "work" ? (
-        <WorkBar action={allActions}/>
+        <WorkBar
+          action={allActions}
+          tasks={props.tasks}
+        />
     ) : (
           <EmployeesBar
-            selector={employeeGroupSelector}
             actions={allActions}
-            tasks={taskSelector}
           />
         )
 
@@ -109,4 +108,4 @@ function ResponsiveDrawer() {
   );
 }
 
-export default ResponsiveDrawer;
+export default ManagerMenu;

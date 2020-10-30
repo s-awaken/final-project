@@ -3,16 +3,24 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles';
 
+import allActions from '../../actions'
+
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Input from '@material-ui/core/Input'
 import Typography from '@material-ui/core/Typography'
-import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 
 export default function EmployeeWorkContainer(props) {
-  const onComplete = (e) => {
-    e.preventDefault();
+  const [taskName, setTaskName] = React.useState("")
+
+  const dispatch = useDispatch()
+
+  const createTask = (event) => {
+    setTaskName(event.target.value)
+  }
+  const saveTask = () => {
+    dispatch(allActions.tasksActions.createTask(taskName))
   }
   return (
     <div>
@@ -24,7 +32,7 @@ export default function EmployeeWorkContainer(props) {
             </h3>
             {props.tasks.map((task => 
               <Typography>
-                {task.task}
+                {task.name}
                 <Button color="primary">Complete</Button>
               </Typography>
               ))}
@@ -35,10 +43,15 @@ export default function EmployeeWorkContainer(props) {
             My own Tasks
           </h3>
           <Typography>
-            <form>
-              <TextField defaultValue="new-task"/>
-              <Button color="primary">
-                Create Task for {props.name}
+            <form onSubmit={event => event.preventDefault()}>
+              <Input
+                onChange={createTask}
+                value={taskName}/>
+              <Button
+                color="primary"
+                onClick={() => { saveTask() }}
+              >
+                Create Task
               </Button>
             </form>
           </Typography>
