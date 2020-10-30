@@ -85,11 +85,7 @@ const updateStatus = (status,taskId,finished_at)=>{
   }
 
 }
-const deleteTask = (taskId)=>{
-  return db('tasks')
-  .where('id',taskId)
-  .del()
-}
+
 
 
 
@@ -99,7 +95,6 @@ module.exports = {
   updateStatus,
   updateTaskContent,
   updateTaskName,
-  deleteTask,
   getTasks,
   getTaskById,
   getTasksByEmployeeId

@@ -8,8 +8,8 @@ exports.seed = function(knex) {
         // {id: 1, colName: 'rowValue1'},
         // {id: 2, colName: 'rowValue2'},
         // {id: 3, colName: 'rowValue3'},
-        {content:"this is first content",name:"task1",status:true},
-        {content:"this is second content",name:"task2",status:true},
+        {content:"this is first content",name:"task1"},
+        {content:"this is second content",name:"task2"},
         {content:"this is third content",name:"task3"},
 
         {content:"this is showing the KPI task1",name:"KPItesting1",status:true,create_at:"2020-10-10",finished_at:"2020-11-11"},
