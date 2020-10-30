@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
   
 });
 router.get("/:employee_id", (req, res) => {
-  const{employee_id} = req.query
+  const {employee_id} = req.query
   getTasksByEmployeeId(employee_id)
   .then((result)=>{
     res.json(result)

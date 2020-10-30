@@ -13,6 +13,7 @@ import Test from './components/Test'
 
 function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
+  // console.log(login)
   const manager = useSelector((state) => state.managerLogin.manager)
   
   const renderPage =
@@ -31,8 +32,9 @@ function App() {
       )
   return (
     <div className="App">
+
       {renderPage}
-      <Test/>
+      {/* <Test/> */}
 
       
     </div>
