@@ -13,7 +13,16 @@ const getEmployeesByDepartment = (department_id)=>{
 
 }
 
+const getEmployeeByName = (firstName)=>{
+  return db('employees')
+  .where('first_name',firstName)
+  .then((result)=>{
+    return result
+  })
+}
+
 module.exports = {
-  getEmployeesByDepartment
+  getEmployeesByDepartment,
+  getEmployeeByName      
 
 };

@@ -57,7 +57,7 @@ export default function EmployeeSignIn(props) {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    dispatch(props.action.setUser());
+    dispatch(props.action.getEmployee("henry"));
     localStorage.setItem(
       "user",
       JSON.stringify({ type: "employee", name: "someone" })
