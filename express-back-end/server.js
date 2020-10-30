@@ -1,4 +1,6 @@
 const PORT = 8080;
+const cors = require('cors');
+
 const Express = require('express');
 const BodyParser = require('body-parser');
 const app = Express();
@@ -9,6 +11,7 @@ const bcrypt = require('bcrypt');
 
 // Express Configuration
 app.use(morgan('dev'));
+app.use(cors());
 app.use(BodyParser.urlencoded({ extended: true }));
 app.use(BodyParser.json());
 app.use(Express.static('public'));

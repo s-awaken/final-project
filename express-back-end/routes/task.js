@@ -11,9 +11,9 @@ const express = require('express');
 const router = express.Router();
 
 
-router.put("/", (req, res) => {
+router.get("/", (req, res) => {
   
-  getTasks()
+  createTask("fxxk")
   .then((result)=>{
     res.json(result)
   })

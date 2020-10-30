@@ -37,6 +37,9 @@ const getEmployeeAttendanceInMonth = (startDate,lastDate,employee_id)=>{
     return {countDays}
     
   })
+  .catch((err)=>{
+    return err
+  })
 
 }
 const updateAttendance = (employee_id)=>{
@@ -47,9 +50,7 @@ const updateAttendance = (employee_id)=>{
     .then((result)=>{
       return result
     })
-    .catch((err)=>{
-      return err
-    })
+    
 }
 
 module.exports = {
