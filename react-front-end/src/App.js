@@ -34,7 +34,7 @@ function App() {
     <div className="App">
 
       {renderPage}
-      {/* <Test/> */}
+      <Test/>
 
       
     </div>
