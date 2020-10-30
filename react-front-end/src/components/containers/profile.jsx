@@ -13,7 +13,7 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 import Avatar from '@material-ui/core/Avatar'
 
 import EditProfile from '../Popup/EditProfile'
-
+import LearnMoreProfile from '../Popup/LearnMoreProfile'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -98,13 +98,13 @@ export default function ProfileContainer(props) {
               <Button onClick={onLearnMore}>Learn More
               {openLearnMore? <ExpandLess /> : <ExpandMore />} 
               </Button>
-              <Collapse on={openLearnMore} timeout="auto" unmountOnExit>
-                
-              </Collapse>
             </CardContent>
           </Card>
         </Grid>
       </Grid>
+              <Collapse on={openLearnMore} timeout="auto" unmountOnExit>
+                <LearnMoreProfile/>
+              </Collapse>
     </div>
   );
 }
