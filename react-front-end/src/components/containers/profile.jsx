@@ -98,13 +98,13 @@ export default function ProfileContainer(props) {
               <Button onClick={onLearnMore}>Learn More
               {openLearnMore? <ExpandLess /> : <ExpandMore />} 
               </Button>
+              <Collapse on={openLearnMore} timeout="auto" unmountOnExit>
+                <LearnMoreProfile/>
+              </Collapse>
             </CardContent>
           </Card>
         </Grid>
       </Grid>
-              <Collapse on={openLearnMore} timeout="auto" unmountOnExit>
-                <LearnMoreProfile/>
-              </Collapse>
     </div>
   );
 }
