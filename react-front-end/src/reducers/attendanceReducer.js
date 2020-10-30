@@ -8,13 +8,13 @@ const attendances = (state = initialState,action) =>{
     
     case 'FETCH_ATTENDANCES_SUCCESS':
       return {
-        loading:false,
+        
         attendances:action.payload,
         error:''
       }
     case 'FETCH_ATTENDANCES_FAILURE':
       return{
-        loading:false,
+        
         attendances:{},
         error:action.payload
       }
