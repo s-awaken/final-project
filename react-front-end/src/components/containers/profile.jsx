@@ -6,9 +6,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid'
+import Collapse from '@material-ui/core/Collapse';
+import ExpandLess from '@material-ui/icons/ExpandLess';
+import ExpandMore from '@material-ui/icons/ExpandMore';
 
 import Avatar from '@material-ui/core/Avatar'
 
+import EditProfile from '../Popup/EditProfile'
+import LearnMoreProfile from '../Popup/LearnMoreProfile'
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -26,12 +31,17 @@ const useStyles = makeStyles({
   },
 });
 
-export default function OutlinedCard() {
+export default function ProfileContainer(props) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
-
-  const onLearnMore = (event) => {
-    event.preventDefault();
+  
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const [openLearnMore, setOpenLearnMore] = React.useState(false)
+  const onEdit = () => {
+    setOpenEdit(!openEdit);
+  };
+  const onLearnMore = () => {
+    setOpenLearnMore(!openLearnMore)
   }
   return (
     <div>
@@ -40,7 +50,7 @@ export default function OutlinedCard() {
           <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography className={classes.title} color="textPrimary" gutterBottom>
-                Name {bull} Syrym Zhauken
+                Name {bull} {props.generalInfo.name}
               </Typography>
               <br/>
               <Typography color="textPrimary">
@@ -52,9 +62,19 @@ export default function OutlinedCard() {
               </Typography>
               <br/>
               <Typography color="textPrimary">
-                Department {bull} Development
+                Department {bull} {props.generalInfo.department}
               </Typography>
             </CardContent>
+            <Button onClick={onEdit}>Edit
+             {openEdit ? <ExpandLess /> : <ExpandMore />}
+            </Button>
+            <Collapse in={openEdit} timeout="auto" unmountOnExit>
+              <EditProfile
+                name={props.generalInfo.name}
+                department={props.generalInfo.department}
+                email={"example@email.com"}
+              />
+            </Collapse>
           </Card>
         </Grid>
         <Grid item xs={12}>
@@ -74,15 +94,17 @@ export default function OutlinedCard() {
                 {bull}
                 <br />
                 Quantity - 3.7
-                
               </Typography>
+              <Button onClick={onLearnMore}>Learn More
+              {openLearnMore? <ExpandLess /> : <ExpandMore />} 
+              </Button>
             </CardContent>
-            <CardActions>
-              <Button onClick={onLearnMore}>Learn More</Button>
-            </CardActions>
           </Card>
         </Grid>
       </Grid>
+              <Collapse on={openLearnMore} timeout="auto" unmountOnExit>
+                <LearnMoreProfile/>
+              </Collapse>
     </div>
   );
 }
