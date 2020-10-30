@@ -1,5 +1,11 @@
 const db = require('../db.js')
 
+
+// select * from tasks
+// join employee_tasks on (tasks.id = employee_tasks.task_id)
+// where employee_id = 4;
+
+
 const getTasks = ()=>{
   return db('tasks')
   .then((result)=>{
@@ -7,6 +13,18 @@ const getTasks = ()=>{
   })
   
 }
+
+const getTasksByEmployeeId = (employee_id)=>{
+  return db('tasks')
+  .where('employee_tasks.employee_id',employee_id)
+  .join('employee_tasks','tasks.id','=','employee_tasks.task_id')
+  .then((result)=>{
+    return result
+  })
+
+
+}
+
 const getTaskById = (taskId)=>{
   return db('tasks')
   .where('id',taskId)
@@ -83,6 +101,7 @@ module.exports = {
   updateTaskName,
   deleteTask,
   getTasks,
-  getTaskById
+  getTaskById,
+  getTasksByEmployeeId
 
 };

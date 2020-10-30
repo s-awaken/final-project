@@ -7,7 +7,7 @@ const getEmployeeAttendanceInMonth = (startDate,lastDate,employee_id)=>{
         .get('http://localhost:8080/attendance',{params:obj})
         .then((response) =>{
 
-          console.log(response)
+          console.log(response.data)
           const attendances = response.data
           dispatch(fetchAttendanceSuccess(attendances))
         })

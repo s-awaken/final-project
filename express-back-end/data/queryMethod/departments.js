@@ -7,6 +7,8 @@ const getDepartments = ()=>{
   })
   
 }
+
+
 const createDepartments = (name)=>{
   return db('departments')
   .returning('*')

@@ -5,6 +5,7 @@ import groupTaskAction from "./groupTaskAction"
 import managerLoginAction from "./managerLoginAction"
 import attendanceActions from "./attendanceActions"
 import departmentsActions from './departmentsActions'
+import tasksActions from './tasksActions'
 const allActions = {
   userActions,
   itemSelectorAction,
@@ -12,6 +13,7 @@ const allActions = {
   groupTaskAction,
   managerLoginAction,
   attendanceActions,
-  departmentsActions
+  departmentsActions,
+  tasksActions
 }
 export default allActions;
