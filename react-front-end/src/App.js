@@ -12,7 +12,9 @@ function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
   const manager = useSelector((state) => state.currentUser.user.is_manager)
   const tasks = useSelector((state) => state.tasks.tasks);
+  
   const dispatch = useDispatch()
+
   console.log(login)
   React.useEffect(() => {
     dispatch(allActions.tasksActions.fetchTasks());
