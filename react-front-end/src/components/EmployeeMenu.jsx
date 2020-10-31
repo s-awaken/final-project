@@ -50,6 +50,9 @@ function EmployeeMenu(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
+        Loggged in as Manager
+      </ListItem>
+      <ListItem>
         <ProfileDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.profile())
