@@ -25,6 +25,7 @@ const getTasksByEmployeeId = (employee_id)=>{
 
 }
 
+
 const getTaskById = (taskId)=>{
   return db('tasks')
   .where('id',taskId)
@@ -86,6 +87,20 @@ const updateStatus = (status,taskId,finished_at)=>{
 
 }
 
+const assignTask = (employee_id,task_id)=>{
+  return db('employee_tasks')
+  .returning('*')
+  .insert({employee_id,task_id})
+  .then((result)=>{
+    return result
+  })
+}
+
+
+
+
+
+
 
 
 
@@ -97,6 +112,7 @@ module.exports = {
   updateTaskName,
   getTasks,
   getTaskById,
-  getTasksByEmployeeId
+  getTasksByEmployeeId,
+  assignTask
 
 };

@@ -31,9 +31,19 @@ const changeGroup = (employeeId,currentTaskId,newTaskId)=>{
   })
 
 }
+const assignGroup = (employee_id,task_id)=>{
+  return db('employee_tasks')
+  .returning('*')
+  .insert({employee_id,task_id})
+  .then((result)=>{
+    return result
+  })
+}
+
 
 module.exports = {
   getGroups,
   getGroupById,
-  changeGroup
+  changeGroup,
+  assignGroup
 };

@@ -19,7 +19,7 @@ const fetchTasksByEmployeeId = (employee_id)=>{
   return (dispatch)=>{
     const obj = {employee_id}
     axios
-        .get(`http://localhost:8080/task/${employee_id}`,{params:obj})
+        .get(`http://localhost:8080/task/employee_id`,{params:obj})
         .then((response)=>{
           console.log(response.data)
           const individualTasks = response.data
@@ -70,6 +70,19 @@ const updateTaskStatus = (status,taskId,finished_at)=>{
   }
 }
 
+const assignTask = (employee_id,task_id)=>{
+  return (dispatch)=>{
+    axios
+        .put(`http://localhost:8080/task/assignTask`,{employee_id,task_id})
+        .then((response)=>{
+          return dispatch(fetchTasksByEmployeeId(employee_id))
+        })
+        .catch((response)=>{
+          return dispatch(fetchIndividualTasksFailure(response))
+        })
+  }
+}
+
 
 
 
@@ -112,5 +125,6 @@ export default{
   updateTaskName,
   updateTaskContent,
   updateTaskStatus,
+  assignTask
 }
 
