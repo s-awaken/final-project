@@ -19,7 +19,7 @@ const fetchTasksByEmployeeId = (employee_id)=>{
   return (dispatch)=>{
     const obj = {employee_id}
     axios
-        .get(`http://localhost:8080/task/${employee_id}`,{params:obj})
+        .get(`http://localhost:8080/task/employee_id`,{params:obj})
         .then((response)=>{
           console.log(response.data)
           const individualTasks = response.data

@@ -59,7 +59,7 @@ router.put(`/content`,(req,res)=>{
 router.put(`/name`,(req,res)=>{
   console.log(req.body)
   const {name,taskId} = req.body;
-  updateTaskName("cao",1)
+  updateTaskName(name,taskId)
   .then((result)=>{
     res.json(result)
   })
