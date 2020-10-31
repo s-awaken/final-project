@@ -3,7 +3,6 @@ const {
   updateStatus,
   updateTaskContent,
   updateTaskName,
-  deleteTask,
   getTasks,
   getTaskById,
   getTasksByEmployeeId
@@ -20,9 +19,8 @@ router.get("/", (req, res) => {
     res.json(result)
   })
   
-  
 });
-router.get("/:employee_id", (req, res) => {
+router.get("/employee_id", (req, res) => {
   const {employee_id} = req.query
   getTasksByEmployeeId(employee_id)
   .then((result)=>{
@@ -61,7 +59,7 @@ router.put(`/content`,(req,res)=>{
 router.put(`/name`,(req,res)=>{
   console.log(req.body)
   const {name,taskId} = req.body;
-  updateTaskName(name,taskId)
+  updateTaskName("cao",1)
   .then((result)=>{
     res.json(result)
   })
@@ -71,9 +69,9 @@ router.put(`/name`,(req,res)=>{
 
 })
 
-router.put(`/status`,(req,res)=>{
+router.get(`/status`,(req,res)=>{
   console.log(req.body)
-  const {status,taskId,finished_at} = req.body
+  const {status,taskId,finished_at} = req.bodys
   updateStatus(status,taskId,finished_at)
   .then((result)=>{
     res.json(result)
