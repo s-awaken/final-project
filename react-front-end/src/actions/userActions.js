@@ -29,7 +29,7 @@ const setUserFailure = (error) => {
 
 const setUserSuccess = (user) => {
   return {
-    type: "SET_USER_SUCCESS",
+    type: SET_USER_SUCCESS,
     payload: user,
   };
 };

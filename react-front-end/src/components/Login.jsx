@@ -45,20 +45,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn(props) {
+export default function Login(props) {
   const classes = useStyles();
-
+  const [user, setUser] = React.useState({})
   const dispatch = useDispatch()
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-    dispatch(props.action.getEmployee("henry"))
+  const createLogin = (event) => {
+    setUser(event.target.value)
   }
-  const handleManager = (event) => {
-    event.preventDefault();
-    dispatch(props.changeLogin.employee())
+  const saveUser = () => {
+    dispatch(props.action.getEmployee(user))
   }
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -67,9 +64,13 @@ export default function SignIn(props) {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Manager Sign in
+          Log in
         </Typography>
-        <form className={classes.form} noValidate onSubmit={handleLogin}>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={event => event.preventDefault()}
+        >
           <TextField
             variant="outlined"
             margin="normal"
@@ -80,6 +81,7 @@ export default function SignIn(props) {
             name="name"
             autoComplete="name"
             autoFocus
+            onChange={createLogin}
           />
           <Button
             type="submit"
@@ -87,16 +89,10 @@ export default function SignIn(props) {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={saveUser}
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item>
-              <Button variant="body2" onClick={handleManager}>
-                Employee ?
-              </Button>
-            </Grid>
-          </Grid>
         </form>
       </div>
       <Box mt={8}>
