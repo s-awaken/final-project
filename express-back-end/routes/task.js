@@ -5,7 +5,8 @@ const {
   updateTaskName,
   getTasks,
   getTaskById,
-  getTasksByEmployeeId
+  getTasksByEmployeeId,
+  assignTask
 
 } = require('../data/queryMethod/task')
 const express = require('express');
@@ -69,10 +70,22 @@ router.put(`/name`,(req,res)=>{
 
 })
 
-router.get(`/status`,(req,res)=>{
+router.put(`/status`,(req,res)=>{
   console.log(req.body)
-  const {status,taskId,finished_at} = req.bodys
+  const {status,taskId,finished_at} = req.body;
   updateStatus(status,taskId,finished_at)
+  .then((result)=>{
+    res.json(result)
+  })
+  .catch((error)=>{
+    res.json(error)
+  })
+})
+
+router.put(`/assignTask`,(req,res)=>{
+  console.log(req.body)
+  const {employee_id,task_id} = req.body;
+  assignTask(employee_id,task_id)
   .then((result)=>{
     res.json(result)
   })
