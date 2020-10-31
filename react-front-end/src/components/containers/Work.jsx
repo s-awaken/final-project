@@ -29,6 +29,7 @@ export default function WorkContainer(props) {
     dispatch(allActions.tasksActions.updateTaskName(editTaskName, index))
   } //Probably works
 
+  
   return (
     <div>
       <Grid container spacing={12}>
