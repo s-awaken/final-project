@@ -36,7 +36,11 @@ router.get("/", (req, res) => {
       //     tasks[data.id].employees.push({first_name:data.first_name,last_name:data.last_name})
       //   }
     }
-    res.json(tasks);
+    const array = []
+    for(task in tasks){
+      array.push(tasks[task])
+    }
+    res.json(array);
   });
 });
 router.get("/1", (req, res) => {
@@ -65,7 +69,11 @@ router.get("/1", (req, res) => {
         });
       }
     }
-    res.json(tasks);
+    const array = []
+    for(task in tasks){
+      array.push(tasks[task])
+    }
+    res.json(array);
   });
 });
 

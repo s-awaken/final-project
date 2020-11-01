@@ -7,6 +7,7 @@ import managerLogin from './managerLogIn'
 import attendances from './attendanceReducer'
 import departments from  './departmentcReducer'
 import tasks from './tasksReducer'
+import groups from './groupsReducer'
 const rootReducer = combineReducers({
   currentUser,
   itemSelector,
@@ -16,5 +17,6 @@ const rootReducer = combineReducers({
   attendances,
   departments,
   tasks,
+  groups,
 });
 export default rootReducer;
