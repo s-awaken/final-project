@@ -7,29 +7,33 @@ export default function Test() {
   const departments = useSelector((state) => state.departments.departments);
   const tasks = useSelector((state) => state.tasks.tasks);
   const individualTasks = useSelector((state)=>state.tasks.individualTasks);
+  const groups = useSelector((state)=>state.groups.groups)//[]
+  const individualGroup = useSelector(state=>state.groups.individualGroup)//{}
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allActions.departmentsActions.getDepartments());
-    dispatch(
-      allActions.attendanceActions.getEmployeeAttendanceInMonth(
-        "2020-10-01",
-        "2020-10-30",
-        4
-      )
-    );
-    dispatch(allActions.tasksActions.fetchTasks());
-    dispatch(allActions.tasksActions.fetchTasksByEmployeeId(1))
+    dispatch(allActions.groupsActions.fetchGroups());
+    // dispatch(allActions.groupsActions.fetchGroupByTaskId(2))
+  //   dispatch(allActions.departmentsActions.getDepartments());
+  //   dispatch(
+  //     allActions.attendanceActions.getEmployeeAttendanceInMonth(
+  //       "2020-10-01",
+  //       "2020-10-30",
+  //       4
+  //     )
+  //   );
+  //   dispatch(allActions.tasksActions.fetchTasks());
+  //   dispatch(allActions.tasksActions.fetchTasksByEmployeeId(1))
   }, []);
-  const attendancesButton = () => {
-    dispatch(
-      allActions.attendanceActions.updateAttendance(
-        "2020-10-01",
-        "2020-10-10",
-        4
-      )
-    );
-  };
+  // const attendancesButton = () => {
+  //   dispatch(
+  //     allActions.attendanceActions.updateAttendance(
+  //       "2020-10-01",
+  //       "2020-10-10",
+  //       4
+      // )
+    // );
+  // };
   const departmentsButton = () => {
     dispatch(allActions.departmentsActions.createDepartments("Mydepartment"));
   };
@@ -49,13 +53,17 @@ export default function Test() {
   const updateTaskStatusButton = ()=>{
     dispatch(allActions.tasksActions.updateTaskStatus(true,1,"2020-11-23"))
   }
+  const changeGroupButton = ()=>{
+    dispatch(allActions.groupsActions.changeGroup(2,4,1))
+  }
   
   return (
     <div>
-      
-
+      {/* {individualGroup['1'].taskName} */}
+  {groups.map((group, index) => <p key={index}>&nbsp;
+  {group.taskName}
+  {group.members.map((member)=><p>{member.employeeFirstName}</p>)}</p>)}
       {/* {attendances.countDays}
-      {departments.map((department, index) => <p key={index}>&nbsp;{department.name}</p>)} */}
       {/* {tasks.map((task, index) => (
         <p key={index}>
           &nbsp;{task.name}
@@ -89,6 +97,7 @@ export default function Test() {
       {/* <button onClick={createTaskButton}>Create task Button</button>
       <button onClick={updateTaskNameButton}>updateTaskNameButton</button> */}
       
+      <button onClick={changeGroupButton}>change group Button</button>
     </div>
   );
 }

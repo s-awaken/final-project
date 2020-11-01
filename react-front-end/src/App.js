@@ -47,7 +47,7 @@ function App() {
   //     )
   return (
     <div className="App">
-      {renderPage}
+      {renderPage}  
     </div>
   );
 }
