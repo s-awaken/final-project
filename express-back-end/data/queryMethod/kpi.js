@@ -30,7 +30,7 @@ const getKPIinMonth = (startDate,lastDate,employee_id,completed)=>{
       }
       averageTaskScore = totalScore / taskAmount
       let kpi = 0.25 * totalAttendance + 0.25 * taskAmount + 0.5 *averageTaskScore;
-      return {totalAttendance,taskAmount,averageTaskScore,kpi}
+      return {employee_id,totalAttendance,taskAmount,averageTaskScore,kpi}
     })
   })
 

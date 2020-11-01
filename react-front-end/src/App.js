@@ -8,6 +8,7 @@ import EmployeeMenu from "./components/EmployeeMenu"
 
 import Login from './components/Login'
 
+
 function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
   const manager = useSelector((state) => state.currentUser.user.is_manager)

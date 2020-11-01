@@ -9,10 +9,13 @@ export default function Test() {
   const individualTasks = useSelector((state)=>state.tasks.individualTasks);
   const groups = useSelector((state)=>state.groups.groups)//[]
   const individualGroup = useSelector(state=>state.groups.individualGroup)//{}
+  const kpi = useSelector(state=>state.kpi.kpi)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(allActions.groupsActions.fetchGroups());
+  //"2020-10-01","2020-10-30",4,true
+    dispatch(allActions.kpiActions.fetchKpi("2020-10-01","2020-10-30",4,true))
+    // dispatch(allActions.groupsActions.fetchGroups());
     // dispatch(allActions.groupsActions.fetchGroupByTaskId(2))
   //   dispatch(allActions.departmentsActions.getDepartments());
   //   dispatch(
@@ -60,9 +63,14 @@ export default function Test() {
   return (
     <div>
       {/* {individualGroup['1'].taskName} */}
-  {groups.map((group, index) => <p key={index}>&nbsp;
+      {kpi.employee_id}
+      {kpi.totalAttendance}
+      {kpi.taskAmount}
+      {kpi.averageTaskScore}
+      {kpi.kpi}
+  {/* {groups.map((group, index) => <p key={index}>&nbsp;
   {group.taskName}
-  {group.members.map((member)=><p>{member.employeeFirstName}</p>)}</p>)}
+  {group.members.map((member)=><p>{member.employeeFirstName}</p>)}</p>)} */}
       {/* {attendances.countDays}
       {/* {tasks.map((task, index) => (
         <p key={index}>

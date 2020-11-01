@@ -8,6 +8,7 @@ import attendances from './attendanceReducer'
 import departments from  './departmentcReducer'
 import tasks from './tasksReducer'
 import groups from './groupsReducer'
+import kpi from './kpiReducer'
 const rootReducer = combineReducers({
   currentUser,
   itemSelector,
@@ -18,5 +19,6 @@ const rootReducer = combineReducers({
   departments,
   tasks,
   groups,
+  kpi
 });
 export default rootReducer;
