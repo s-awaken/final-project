@@ -9,9 +9,9 @@ const getGroups = ()=>{
     return result
   })
 }
-const getGroupById = (id)=>{
+const getGroupById = (task_id)=>{
   return db('tasks')
-  .where('tasks.id',id)
+  .where('tasks.id',task_id)
   .join('employee_tasks','tasks.id','=','employee_tasks.task_id')
   .join('employees','employees.id','=','employee_tasks.employee_id')
   .then((result)=>{

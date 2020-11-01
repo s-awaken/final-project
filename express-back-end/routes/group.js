@@ -43,8 +43,12 @@ router.get("/", (req, res) => {
     res.json(array);
   });
 });
-router.get("/1", (req, res) => {
-  getGroupById(1).then((result) => {
+router.get("/taskId", (req, res) => {
+  // const {task_id}=req.query
+
+
+  getGroupById(1)
+  .then((result) => {
     console.log(result);
     let tasks = {};
     for (const data of result) {
@@ -69,16 +73,18 @@ router.get("/1", (req, res) => {
         });
       }
     }
-    const array = []
-    for(task in tasks){
-      array.push(tasks[task])
-    }
-    res.json(array);
+    // const array = []
+    // for(task in tasks){
+    //   array.push(tasks[task])
+    // }
+    res.json(tasks);
   });
 });
 
-router.get("/2",(req,res)=>{
-  changeGroup(2,1,2)
+router.put("/",(req,res)=>{
+  console.log(req.body)
+  const {employeeId,currentTaskId,newTaskId} = req.body;
+  changeGroup(employeeId,currentTaskId,newTaskId)
   .then((result)=>{
     res.json(result)
   })

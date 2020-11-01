@@ -1,6 +1,6 @@
 const initialState = {
   groups:[],
-  individualGroup:[],
+  individualGroup:{},
   error:''
 }
 
@@ -27,7 +27,7 @@ const groups = (state = initialState,action)=>{
     case 'FETCH_INDIVIDUAL_GROUP_FAILURE':
       return {
         ...state,
-        individualGroup:[],
+        individualGroup:{},
         error:action.payload
       }
     default:
