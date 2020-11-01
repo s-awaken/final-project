@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 export default function WorkBar(props) {
   const classes = useStyles();
-  const manager = useSelector((state) => state.managerLogin.manager)
+  const manager = useSelector((state) => state.currentUser.user.is_manager)
   const workRenderContainer =
     manager ? (
       <WorkContainer tasks={props.tasks} />

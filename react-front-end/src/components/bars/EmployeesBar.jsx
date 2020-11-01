@@ -58,6 +58,7 @@ export default function EmployeesBar(props) {
         {groups.map(group => {
           return (
             <Grid item xs>
+              {/* Want to render employees for a certain task into a group */}
               <EmployeesContainer
               name={group}
               task={"Do React"}

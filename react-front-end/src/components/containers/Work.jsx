@@ -28,6 +28,8 @@ export default function WorkContainer(props) {
   const saveEditTask = (index) => {
     dispatch(allActions.tasksActions.updateTaskName(editTaskName, index))
   } //Probably works
+
+  
   return (
     <div>
       <Grid container spacing={12}>
@@ -63,17 +65,16 @@ export default function WorkContainer(props) {
 
 
           <h3>Edit Task for Employee's</h3>
-            {props.tasks.map(((task, index ) =>
+            {props.tasks.map(((task) =>
               <form
-                key={index}
+                key={task.id}
                 onSubmit={event => event.preventDefault()}
               > 
                 <Input
-                  value={editTaskName[index].name || ""}
                   onChange={editTask}
                 />
                 <Button
-                  onClick={() => { saveEditTask(index) }}
+                  onClick={() => { saveEditTask(task.id) }}
                   color="primary">Edit</Button>
               </form>
             ))}

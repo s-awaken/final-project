@@ -6,39 +6,47 @@ import allActions from "./actions";
 import ManagerMenu from "./components/ManagerMenu"
 import EmployeeMenu from "./components/EmployeeMenu"
 
-import SignIn from './components/ManagerSign-in'
-import EmployeeSignIn from './components/EmployeeSign-in'
-
-import Test from './components/Test'
+import Login from './components/Login'
 
 function App() {
   const login = useSelector((state) => state.currentUser.loggedIn)
-  // console.log(login)
-  const manager = useSelector((state) => state.managerLogin.manager)
+  const manager = useSelector((state) => state.currentUser.user.is_manager)
   const tasks = useSelector((state) => state.tasks.tasks);
-  const dispatch = useDispatch()
   
+  const dispatch = useDispatch()
+
+  console.log(login)
   React.useEffect(() => {
     dispatch(allActions.tasksActions.fetchTasks());
   }, [])
   
-  const renderPage =
-    manager ? (
-      login ? (
-        <ManagerMenu tasks={tasks}/>
-      ) : (
-          <SignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
-        )
+  const renderPage = 
+    !login ? (
+      <Login action={allActions.userActions}/>
     ) : (
-        login ? (
-          <EmployeeMenu tasks={tasks}/>
+        manager ? (
+          <ManagerMenu tasks={tasks}/>
         ) : (
-            <EmployeeSignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
-          )
-      )
+          <EmployeeMenu tasks={tasks}/>
+        )
+    )
+
+  // const renderPage =
+  //   manager ? (
+  //     login ? (
+  //       <ManagerMenu tasks={tasks}/>
+  //     ) : (
+  //         <SignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
+  //       )
+  //   ) : (
+  //       login ? (
+  //         <EmployeeMenu tasks={tasks}/>
+  //       ) : (
+  //           <EmployeeSignIn action={allActions.userActions} changeLogin={allActions.managerLoginAction} />
+  //         )
+  //     )
   return (
     <div className="App">
-
       {renderPage}
     </div>
   );
