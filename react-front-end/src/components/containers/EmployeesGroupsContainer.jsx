@@ -31,8 +31,9 @@ export default function EmployeesContainer(props) {
   const [open, setOpen] = React.useState(true);
 
   const handleCreate = () => {
-
+    // Need a function to choose an employee to assign to a group
   }
+
   const handleClick = () => {
     setOpen(!open);
   };
@@ -50,7 +51,7 @@ export default function EmployeesContainer(props) {
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            
+
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
                 <Avatar alt={props.groupNames[0]} src=""/>
