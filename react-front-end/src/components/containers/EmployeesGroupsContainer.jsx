@@ -29,6 +29,9 @@ export default function EmployeesContainer(props) {
   const classes = useStyles()
   const [open, setOpen] = React.useState(true);
 
+  const handleCreate = () => {
+
+  }
   const handleClick = () => {
     setOpen(!open);
   };
@@ -116,7 +119,7 @@ export default function EmployeesContainer(props) {
           Edit Button
         </ListItem>
         <ListItem button>
-          Create Button
+          Add Employee
         </ListItem>
       </List>
     </Container>

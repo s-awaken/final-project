@@ -50,7 +50,7 @@ function EmployeeMenu(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
-        Loggged in as Manager
+        Loggged in as Employee
       </ListItem>
       <ListItem>
         <ProfileDrawer

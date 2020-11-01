@@ -71,7 +71,6 @@ export default function WorkContainer(props) {
                 onSubmit={event => event.preventDefault()}
               > 
                 <Input
-                  value={task.name || ""}
                   onChange={editTask}
                 />
                 <Button
