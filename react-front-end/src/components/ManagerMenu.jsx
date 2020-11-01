@@ -52,6 +52,10 @@ function ManagerMenu(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
+        Loggged in as Manager
+      </ListItem>
+      <Divider/>
+      <ListItem>
         <ProfileDrawer
           onClick={() => {
             dispatch(allActions.itemSelectorAction.profile())
@@ -98,6 +102,7 @@ function ManagerMenu(props) {
     <div>
       {drawer}
       <div className={classes.contentContainer}>
+
         {bar}
         <main className={classes.content}>
           <div className={classes.toolbar} />
