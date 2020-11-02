@@ -62,8 +62,7 @@ export default function WorkContainer(props) {
         <Grid item xs>
 
           {/* Somewhere Below */}
-
-
+          
           <h3>Edit Task for Employee's</h3>
             {props.tasks.map(((task) =>
               <form
