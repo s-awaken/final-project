@@ -9,29 +9,29 @@ import Box from '@material-ui/core/Box';
 import WorkContainer from '../containers/Work'
 import WorkEmployeeContainer from '../containers/EmployeeWorkContainer'
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
+// function TabPanel(props) {
+//   const { children, value, index, ...other } = props;
+//   return (
+//     <div
+//       role="tabpanel"
+//       hidden={value !== index}
+//       id={`simple-tabpanel-${index}`}
+//       aria-labelledby={`simple-tab-${index}`}
+//       {...other}
+//     >
+//       {value === index && (
+//         <Box p={3}>
+//           <Typography>{children}</Typography>
+//         </Box>
+//       )}
+//     </div>
+//   );
+// }
+// TabPanel.propTypes = {
+//   children: PropTypes.node,
+//   index: PropTypes.any.isRequired,
+//   value: PropTypes.any.isRequired,
+// };
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,8 +41,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 export default function WorkBar(props) {
+
+  
   const classes = useStyles();
   const manager = useSelector((state) => state.currentUser.user.is_manager)
+
   const workRenderContainer =
     manager ? (
       <WorkContainer tasks={props.tasks} />

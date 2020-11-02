@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ManagerMenu(props) {
+  const user = useSelector((state)=>state.currentUser.user)
 
   const classes = useStyles();
 
@@ -52,7 +53,7 @@ function ManagerMenu(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
-        Loggged in as Manager
+        Loggged in as {user.first_name}
       </ListItem>
       <Divider/>
       <ListItem>

@@ -46,11 +46,12 @@ function EmployeeMenu(props) {
 
   const itemSelector = useSelector((state) => state.itemSelector.selected)
   const dispatch = useDispatch();
+  const user = useSelector((state)=>state.currentUser.user)
 
   const drawer = (
     <div className={classes.drawerContainer}>
       <ListItem>
-        Loggged in as Employee
+        Loggged in as {user.first_name}
       </ListItem>
       <ListItem>
         <ProfileDrawer
