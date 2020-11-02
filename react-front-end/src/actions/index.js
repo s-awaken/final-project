@@ -7,6 +7,7 @@ import attendanceActions from "./attendanceActions"
 import departmentsActions from './departmentsActions'
 import tasksActions from './tasksActions'
 import groupsActions from './groupsActions'
+import kpiActions from './kpiActions'
 const allActions = {
   userActions,
   itemSelectorAction,
@@ -17,5 +18,6 @@ const allActions = {
   departmentsActions,
   tasksActions,
   groupsActions,
-}
+  kpiActions
+} 
 export default allActions;
