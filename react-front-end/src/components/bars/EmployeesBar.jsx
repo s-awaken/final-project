@@ -1,4 +1,5 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import {useSelector,useDispatch} from "react-redux";
 
 
 import PropTypes from 'prop-types';
@@ -9,31 +10,32 @@ import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 
 import EmployeesContainer from '../containers/EmployeesGroupsContainer'
+import allActions from '../../actions';
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+// function TabPanel(props) {
+//   const { children, value, index, ...other } = props;
 
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
+//   return (
+//     <div
+//       role="tabpanel"
+//       hidden={value !== index}
+//       id={`simple-tabpanel-${index}`}
+//       aria-labelledby={`simple-tab-${index}`}
+//       {...other}
+//     >
+//       {value === index && (
+//         <Box p={3}>
+//           <Typography>{children}</Typography>
+//         </Box>
+//       )}
+//     </div>
+//   );
+// }
+// TabPanel.propTypes = {
+//   children: PropTypes.node,
+//   index: PropTypes.any.isRequired,
+//   value: PropTypes.any.isRequired,
+// };
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,9 +45,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const groups = ["group 1", "group 2", "group 3"]
+// const groups = ["group 1", "group 2", "group 3"]
 export default function EmployeesBar(props) {
+  const dispatch = useDispatch();
 
+  const groups = useSelector((state)=>state.groups.groups)
+
+  useEffect(()=>{
+    dispatch(allActions.groupsActions.fetchGroups());
+  },[])
   const classes = useStyles();
 
 
@@ -60,9 +68,13 @@ export default function EmployeesBar(props) {
             <Grid item xs>
               {/* Want to render employees for a certain task into a group */}
               <EmployeesContainer
-              name={group}
-              task={"Do React"}
-              groupNames={["Person One", "Person Two", "Person 3"]} />
+              name={group.taskName}
+              task={group.taskId}
+              members={group.members}
+              // groupNames={["Person One", "Person Two", "Person 3"]}
+              taskContent={group.taskContent}
+               />
+              
             </Grid>
           )
         })}

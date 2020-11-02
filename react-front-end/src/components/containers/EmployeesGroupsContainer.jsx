@@ -51,13 +51,15 @@ export default function EmployeesContainer(props) {
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-
+            {props.members.map((member)=>{
+              return (
             <ListItem alignItems="flex-start">
               <ListItemAvatar>
-                <Avatar alt={props.groupNames[0]} src=""/>
+                <Avatar  src=""/>
               </ListItemAvatar>
+
               <ListItemText
-              primary={props.groupNames[0]}
+              // primary={props.groupNames[0]}
               secondary={
                 <React.Fragment>
                   <Typography
@@ -66,13 +68,16 @@ export default function EmployeesContainer(props) {
                     className={classes.inline}
                     color="textPrimary"
                   >
-                    {props.groupNames[0]}
+                    {member.employeeFirstName}
                   </Typography>
-                  {" — I'll be in your neighborhood doing errands this…"}
+                  {/* {props.taskContent} */}
                 </React.Fragment>
               }
             />
             </ListItem>
+
+              )
+            })}
           </List>
         </Collapse>
         <ListItem >
