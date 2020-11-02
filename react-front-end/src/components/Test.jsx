@@ -10,11 +10,13 @@ export default function Test() {
   const groups = useSelector((state)=>state.groups.groups)//[]
   const individualGroup = useSelector(state=>state.groups.individualGroup)//{}
   const kpi = useSelector(state=>state.kpi.kpi)
+  const user = useSelector((state)=>state.currentUser.user)
+
   const dispatch = useDispatch();
 
   useEffect(() => {
   //"2020-10-01","2020-10-30",4,true
-    dispatch(allActions.kpiActions.fetchKpi("2020-10-01","2020-10-30",4,true))
+    // dispatch(allActions.kpiActions.fetchKpi("2020-10-01","2020-10-30",4,true))
     // dispatch(allActions.groupsActions.fetchGroups());
     // dispatch(allActions.groupsActions.fetchGroupByTaskId(2))
   //   dispatch(allActions.departmentsActions.getDepartments());

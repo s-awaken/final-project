@@ -1,4 +1,6 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+import {useSelector,useDispatch} from "react-redux"
+import allActions from "../../actions"
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -33,6 +35,9 @@ const useStyles = makeStyles({
 
 export default function ProfileContainer(props) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const kpi = useSelector(state=>state.kpi.kpi)
+  const user = useSelector(state=>state.currentUser.user)
   const bull = <span className={classes.bullet}>•</span>;
   
   const [openEdit, setOpenEdit] = React.useState(false);
@@ -43,6 +48,12 @@ export default function ProfileContainer(props) {
   const onLearnMore = () => {
     setOpenLearnMore(!openLearnMore)
   }
+
+  useEffect(()=>{
+    dispatch(allActions.kpiActions.fetchKpi("2020-10-01","2020-10-30",user.id,true))
+    console.log("aaaa")
+    console.log(kpi)
+  },[])
   return (
     <div>
       <Grid container spacing={3}>
@@ -50,7 +61,7 @@ export default function ProfileContainer(props) {
           <Card className={classes.root} variant="outlined">
             <CardContent>
               <Typography className={classes.title} color="textPrimary" gutterBottom>
-                Name {bull} {props.generalInfo.name}
+                Name {bull} {user.first_name}
               </Typography>
               <br/>
               <Typography color="textPrimary">
@@ -70,8 +81,8 @@ export default function ProfileContainer(props) {
             </Button>
             <Collapse in={openEdit} timeout="auto" unmountOnExit>
               <EditProfile
-                name={props.generalInfo.name}
-                department={props.generalInfo.department}
+                name={user.first_name}
+                // department={props.generalInfo.department}
                 email={"example@email.com"}
               />
             </Collapse>
@@ -85,15 +96,19 @@ export default function ProfileContainer(props) {
               </Typography>
               {bull}
               <Typography variant="body2" component="p">
-                Attendance - 3.4
+                Attendance - {kpi.totalAttendance}
                 <br />
                 {bull}
                 <br/>
-                Quality - 4.1
+                taskAmount - {kpi.taskAmount}
                 <br />
                 {bull}
                 <br />
-                Quantity - 3.7
+                averageTaskScore - {kpi.averageTaskScore}
+                <br />
+                {bull}
+                <br />
+                overall Kpi - {kpi.kpi}
               </Typography>
               <Button onClick={onLearnMore}>Learn More
               {openLearnMore? <ExpandLess /> : <ExpandMore />} 
