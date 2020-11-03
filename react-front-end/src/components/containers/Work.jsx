@@ -93,6 +93,7 @@ export default function WorkContainer(props) {
                 // onChange={(event) => {
                 //   return setEditTaskName(event.target.value);
                 // }}
+                
                 value={task.name}
                 type="text"
               ></Input>
