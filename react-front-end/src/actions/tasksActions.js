@@ -41,7 +41,8 @@ const createTask = (name)=>{
   }
 }
 const updateTaskName = (name,taskId)=>{
-  return (dispatch)=>{
+  console.log("Name", name)
+  return (dispatch) => {
     axios
         .put(`http://localhost:8080/task/name`,{name,taskId})
         .then((response)=>{
