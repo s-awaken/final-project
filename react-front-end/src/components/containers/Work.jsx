@@ -8,7 +8,8 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+
+import DialogEdit from '../Popup/EditTask'
 
 export default function WorkContainer(props) {
   const [taskName, setTaskName] = React.useState("");
@@ -16,20 +17,21 @@ export default function WorkContainer(props) {
   console.log(props.tasks)
   const dispatch = useDispatch();
 
+  const [open, setOpen] = React.useState(false);
+
+  const openDialog = () => {
+    setOpen(true);
+  };
+
+  const closeDialog = () => {
+    setOpen(false);
+  };
   const createTask = (event) => {
     setTaskName(event.target.value);
   };
   const saveTask = () => {
     dispatch(allActions.tasksActions.createTask(taskName));
   };
-  const editTask = (event) => {
-    setEditTaskName(event.target.value);
-  }; // Does not work
-
-  const saveEditTask = (index) => {
-    dispatch(allActions.tasksActions.updateTaskName(editTaskName, index));
-  }; //Probably works
-
   return (
     <div>
       <Grid container spacing={12}>
@@ -59,61 +61,22 @@ export default function WorkContainer(props) {
           </Paper>
         </Grid>
         <Grid item xs>
-          {/* Somewhere Below */}
 
-          <h3>Edit TaskName for Employee's</h3>
-          {/* {props.tasks.map(((task,index) =>
-              <form
+          <h3>All Tasks</h3>
+          {props.tasks.map((task) =>
+            <Paper>
+
+              {task.name}
+              <Button onClick={openDialog} color="primary">View</Button>
+              <DialogEdit
                 key={task.id}
-                onSubmit={event => event.preventDefault()}
-                
-                autoComplete="false"
-              > 
-                <Input
-                  onChange={(event)=>{
-                    return setEditTaskName(event.target.value)
-                  }}
-                  value=""
-                  type="text"
-                  name="task.name"
-                />
-                <Button
-                  onClick={() => { saveEditTask(task.id) }}
-                  color="primary">Edit</Button>
-              </form>
-            ))} */}
-          {props.tasks.map((task,index) => 
-            <form
-              onSubmit={event => {
-                event.preventDefault();
-              }}
-              autoComplete="false"
-            >
-              <Input
-                // onChange={(event) => {
-                //   return setEditTaskName(event.target.value);
-                // }}
-                value={task.name}
-                type="text"
-              ></Input>
-              <Button onClick={() => saveEditTask(task.id)}  color="primary">Edit</Button>
-            </form>
+                task={task}
+                openDialog={openDialog}
+                closeDialog={closeDialog}
+                open={open}
+              />
+            </Paper>
           )}
-        </Grid>
-        <Grid item xs={12}>
-          <h3>Recently Created Tasks</h3>
-          {/* <Paper>
-            <Typography>
-              {props.tasks.map((task, index) => (
-              <p key={index}>
-                &nbsp;{task.name}
-                <br>
-
-                </br>
-                {task.content}
-              </p>))}
-            </Typography>
-          </Paper> */}
         </Grid>
       </Grid>
     </div>
