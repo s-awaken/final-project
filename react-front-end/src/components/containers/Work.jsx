@@ -63,48 +63,22 @@ export default function WorkContainer(props) {
         <Grid item xs>
 
           <h3>All Tasks</h3>
-          {props.tasks.map((task) =>
-            <Paper>
+          {props.tasks.map((task) =>{
 
+          return(
+            <Paper>
               {task.name}
               <Button onClick={openDialog} color="primary">View</Button>
               <DialogEdit
                 key={task.id}
-                onSubmit={event => event.preventDefault()}
-                
-                autoComplete="false"
-              > 
-                <Input
-                  onChange={(event)=>{
-                    return setEditTaskName(event.target.value)
-                  }}
-                  value=""
-                  type="text"
-                  name="task.name"
-                />
-                <Button
-                  onClick={() => { saveEditTask(task.id) }}
-                  color="primary">Edit</Button>
-              </form>
-            ))} */}
-          {props.tasks.map((task,index) => 
-            <form
-              onSubmit={event => {
-                event.preventDefault();
-              }}
-              autoComplete="false"
-            >
-              <Input
-                // onChange={(event) => {
-                //   return setEditTaskName(event.target.value);
-                // }}
-                
-                value={task.name}
-                type="text"
-              ></Input>
-              <Button onClick={() => saveEditTask(task.id)}  color="primary">Edit</Button>
-            </form>
-          )}
+                task={task}
+                openDialog={openDialog}
+                closeDialog={closeDialog}
+                open={open}
+              />
+            </Paper>
+          )
+            })}
         </Grid>
       </Grid>
     </div>
