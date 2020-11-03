@@ -8,6 +8,7 @@ const db = require('../db.js')
 
 const getTasks = ()=>{
   return db('tasks')
+  .orderBy('id', 'ASC')
   .then((result)=>{
     return result
   })
