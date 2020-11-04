@@ -32,8 +32,8 @@ export default function EmployeeWorkContainer(props) {
   // }
   return (
     <div>
-      <Grid container spacing={3}>
-        <Grid item xs>
+      <Grid container spacing={12}>
+        <Grid item xs={12}>
           <Paper>
             <h3>
               Manager Assigned Tasks
@@ -45,29 +45,6 @@ export default function EmployeeWorkContainer(props) {
               </Typography>
               ))}
           </Paper>
-        </Grid>
-        <Grid item xs>
-          <h3>
-            My own Tasks
-          </h3>
-          <Typography>
-            <form onSubmit={event => event.preventDefault()}>
-              <Input
-                onChange={createTask}
-                value={taskName}/>
-              <Button
-                color="primary"
-                onClick={() => { saveTask() }}
-              >
-                Create Task
-              </Button>
-            </form>
-          </Typography>
-        </Grid>
-        <Grid item xs>
-          <Typography >
-            
-          </Typography>
         </Grid>
       </Grid>
     </div>
