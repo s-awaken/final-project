@@ -13,4 +13,14 @@ router.get('/',(req,res)=>{
   
 })
 
+router.get('/department',(req,res)=>{
+  console.log(req.query)
+  const {department_id} = req.query
+
+  getEmployeesByDepartment(department_id)
+  .then((result)=>{
+    res.json(result)
+  })
+})
+
 module.exports = router;

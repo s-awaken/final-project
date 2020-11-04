@@ -64,13 +64,13 @@ export default function ProfileContainer(props) {
                 Name {bull} {user.first_name}
               </Typography>
               <br/>
-              <Typography color="textPrimary">
+              {/* <Typography color="textPrimary">
                 email {bull} example@email.com
               </Typography>
               <br/>
               <Typography color="textPrimary">
                 age {bull} 21
-              </Typography>
+              </Typography> */}
               <br/>
               <Typography color="textPrimary">
                 Department {bull} {props.generalInfo.department}

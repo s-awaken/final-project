@@ -9,6 +9,8 @@ import departments from  './departmentcReducer'
 import tasks from './tasksReducer'
 import groups from './groupsReducer'
 import kpi from './kpiReducer'
+import users from './userReducer'
+
 const rootReducer = combineReducers({
   currentUser,
   itemSelector,
@@ -19,6 +21,7 @@ const rootReducer = combineReducers({
   departments,
   tasks,
   groups,
-  kpi
+  kpi,
+  users
 });
 export default rootReducer;

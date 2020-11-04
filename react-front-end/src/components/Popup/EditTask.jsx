@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useDispatch } from "react-redux";
 
 import Dialog from '@material-ui/core/Dialog'
@@ -24,10 +24,12 @@ export default function DialogEdit(props) {
     dispatch(allActions.tasksActions.updateTaskName(editTaskName, index));
     props.closeDialog()
   }
+  
+  
     return (
       < div>
         {console.log("Message of props: ", props.task.name)}
-        <Dialog open={props.open} onClose={props.openDialog} aria-labelledby="form-dialog-title">
+        <Dialog open={props.open} onClose={props.openDialog} onclick={props.onclick} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">Edit Task</DialogTitle>
           <DialogContent>
               <DialogContentText>
