@@ -38,7 +38,7 @@ export default function WorkContainer(props) {
   return (
     <div>
       <Grid container spacing={12}>
-        <Grid item xs>
+        <Grid item xs={6}>
           <Paper>
             <h3>Create Task for Employee</h3>
             <form onSubmit={(event) => event.preventDefault()}>
@@ -54,16 +54,7 @@ export default function WorkContainer(props) {
             </form>
           </Paper>
         </Grid>
-        <Grid item xs>
-          <h3>Review Employees' Tasks name</h3>
-          <Paper>
-            <form>
-              <Input defaultValue="Quality" />
-              <Button color="primary">Review</Button>
-            </form>
-          </Paper>
-        </Grid>
-        <Grid item xs>
+        <Grid item xs={6}>
           <h3>All Tasks</h3>
           {props.tasks.map((task,index) => {
             return (
