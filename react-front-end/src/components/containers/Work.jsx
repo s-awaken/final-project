@@ -8,18 +8,21 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
-
-import DialogEdit from '../Popup/EditTask'
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import DialogEdit from "../Popup/EditTask";
 
 export default function WorkContainer(props) {
   const [taskName, setTaskName] = React.useState("");
   const [editTaskName, setEditTaskName] = React.useState("");
-  console.log(props.tasks)
+  const [currentTask,setCurrentTask] = React.useState(props.tasks[0])
+  console.log(props.tasks);
   const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false);
 
-  const openDialog = () => {
+  const openDialog = (index) => {
+    setCurrentTask(props.tasks[index])
     setOpen(true);
   };
 
@@ -61,24 +64,34 @@ export default function WorkContainer(props) {
           </Paper>
         </Grid>
         <Grid item xs>
-
           <h3>All Tasks</h3>
-          {props.tasks.map((task) =>{
-
-          return(
-            <Paper>
-              {task.name}
-              <Button onClick={openDialog} color="primary">View</Button>
-              <DialogEdit
+          {props.tasks.map((task,index) => {
+            return (
+              <Paper>
+                <p >{task.name}</p>
+                <Button onClick={()=>{openDialog(index)}} color="primary">
+                  View
+                </Button>
+                {/* <DialogEdit
                 key={task.id}
                 task={task}
                 openDialog={openDialog}
                 closeDialog={closeDialog}
                 open={open}
-              />
-            </Paper>
-          )
-            })}
+                // onClick={openDialog}
+              /> */}
+              </Paper>
+            );
+          })}
+          <DialogEdit
+            // key={task.id}
+            task={currentTask}
+            openDialog={openDialog}
+            closeDialog={closeDialog}
+            open={open}
+                // onClick={openDialog}
+          />
+
         </Grid>
       </Grid>
     </div>

@@ -17,19 +17,19 @@ exports.seed = function (knex) {
           first_name: "Syrym",
           last_name: "Zhauken",
           is_manager: true,
-          department_id: 2,
+          department_id: 1,
         },
         {
-          first_name: "First",
+          first_name: "Employee1",
           last_name: "Last",
           is_manager: false,
-          department_id: 3,
+          department_id: 1,
         },
         {
-          first_name: "KPIFirst",
+          first_name: "Employee2",
           last_name: "KPILast",
           is_manager: false,
-          department_id: 3,
+          department_id: 1,
         },
       ]);
     });
