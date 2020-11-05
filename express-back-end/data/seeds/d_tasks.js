@@ -2,7 +2,7 @@ exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex('tasks')
     .del()
-    .then(function () {
+    .then(function() {
       // Inserts seed entries
       return knex('tasks').insert([
         // {id: 1, colName: 'rowValue1'},
@@ -14,10 +14,10 @@ exports.seed = function(knex) {
         // {content:"this is forth content",name:"task4"},
 
 
-        {content:"this is conent1",name:"Test1",status:true,create_at:"2020-10-10",finished_at:"2020-10-17"},
-        {content:"this is conent2",name:"Test2",status:true,create_at:"2020-10-10",finished_at:"2020-10-18"},
-        {content:"this is conent3",name:"Test3",status:true,create_at:"2020-10-10",finished_at:"2020-10-19"},
-        {content:"this is conent4",name:"Test4",status:true,create_at:"2020-10-10",finished_at:"2020-10-20"},
+        {content:"Summary should include: all the work done, attendance, review the sales",name:"Write week summary",status:true,create_at:"2020-10-10",finished_at:"2020-10-17"},
+        {content:"Create Database Migrations using KNEX, should include: Total Sales, Sellers id and name",name:"Create migrations",status:true,create_at:"2020-10-10",finished_at:"2020-10-18"},
+        {content:"Prepare, Present, get hired",name:"Demo Day Presentation",status:true,create_at:"2020-10-10",finished_at:"2020-10-19"},
+        {content:"Work on the Manage.io project",name:"Post-Bootcamp",status:true,create_at:"2020-10-10",finished_at:"2020-10-20"},
 
         // {content:"this is showing the KPI task2",name:"KPItesting2",status:true,create_at:"2020-10-10",finished_at:"2020-10-12"},
         // {content:"this is showing the KPI task3",name:"KPItesting3",status:true,create_at:"2020-10-10",finished_at:"2020-10-13"},

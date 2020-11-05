@@ -100,15 +100,15 @@ export default function ProfileContainer(props) {
                 <br />
                 {bull}
                 <br/>
-                taskAmount - {kpi.taskAmount}
+                Task Amount - {kpi.taskAmount}
                 <br />
                 {bull}
                 <br />
-                averageTaskScore - {kpi.averageTaskScore}
+                Average Task Score - {kpi.averageTaskScore}
                 <br />
                 {bull}
                 <br />
-                overall Kpi - {kpi.kpi}
+                Overall Kpi - {kpi.kpi}
               </Typography>
               <Button onClick={onLearnMore}>Learn More
               {openLearnMore? <ExpandLess /> : <ExpandMore />} 

@@ -1,14 +1,14 @@
-exports.seed = function (knex) {
+exports.seed = function(knex) {
   // Deletes ALL existing entries
   return knex("employees")
     .del()
-    .then(function () {
+    .then(function() {
       // Inserts seed entries
       return knex("employees").insert([
         {
           
-          first_name: "henry",
-          last_name: "he",
+          first_name: "Henry",
+          last_name: "He",
           is_manager: true,
           department_id: 1,
         },
@@ -20,14 +20,14 @@ exports.seed = function (knex) {
           department_id: 1,
         },
         {
-          first_name: "Employee1",
-          last_name: "Last",
+          first_name: "Alice",
+          last_name: "Wander",
           is_manager: false,
           department_id: 1,
         },
         {
-          first_name: "Employee2",
-          last_name: "KPILast",
+          first_name: "Bob",
+          last_name: "Smith",
           is_manager: false,
           department_id: 1,
         },
