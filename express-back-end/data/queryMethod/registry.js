@@ -1,7 +1,6 @@
 const db = require('../db.js')
 
 const createEmployee = (first_name,last_name,is_manager,department_name)=>{
-
   return db('departments')
   .where({name:department_name})
   .select('id')
@@ -15,7 +14,6 @@ const createEmployee = (first_name,last_name,is_manager,department_name)=>{
       return data
     })
   })
-  
 }
 
 module.exports = {
