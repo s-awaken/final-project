@@ -20,27 +20,20 @@ const db = require('../db.js')
 // }
 const getEmployeeAttendanceInMonth = (startDate,lastDate,employee_id)=>{
   return db('attendances')
-  // .count('date')
   .where(function(){
     this.where('employee_id',employee_id)
     .andWhere('date','<=',lastDate)
     .andWhere('date','>=',startDate)
   })
-  // .count('date')
   .distinctOn('date')
-  // .groupBy('date')
-  // .count('date')
-  
   .then((result)=>{
     // return result
     let countDays = result.length
     return {countDays}
-    
   })
   .catch((err)=>{
     return err
   })
-
 }
 const updateAttendance = (employee_id)=>{
 

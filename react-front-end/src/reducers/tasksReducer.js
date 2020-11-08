@@ -12,9 +12,6 @@ const tasks = (state = initialState,action)=>{
         tasks:action.payload,
         error:''
       }
-      // return Object.assign({},state,{
-      //   tasks:action.payload
-      // })
     case 'FETCH_TASKS_FAILURE':
       return {
         ...state,
